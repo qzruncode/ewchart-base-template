@@ -2,20 +2,20 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 import React, { useEffect, useState } from 'react';
 import { NotificationOutlined } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu } from 'antd';
+import { Layout, Menu } from 'antd';
 
 const Sider = Layout.Sider;
 const Content = Layout.Content;
 
 const menus = [
   {
-    key: '1',
+    key: 'ewchart',
     icon: React.createElement(NotificationOutlined),
-    label: 'react项目',
+    label: 'ewchart示例',
     children: [
       {
-        key: '1-1',
-        label: '页面一',
+        key: 'line',
+        label: '折线图',
       },
       {
         key: '2-2',
@@ -28,15 +28,15 @@ const menus = [
 const darkTunnelBaseTemplate = props => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [selectedKeys, setSelectedKeys] = useState(['1']);
+  const [selectedKeys, setSelectedKeys] = useState(['line']);
 
   useEffect(() => {
-    if (location.pathname.includes('page1')) {
-      setSelectedKeys(['1', '1-1']);
+    if (location.pathname === '/') {
+      navigate('line');
     } else {
-      setSelectedKeys(['1', '1-2']);
+      navigate(location.pathname);
     }
-  }, [location]);
+  }, []);
 
   return (
     <Layout>
@@ -44,15 +44,11 @@ const darkTunnelBaseTemplate = props => {
         <Menu
           mode="inline"
           selectedKeys={selectedKeys}
-          defaultOpenKeys={['1']}
+          defaultOpenKeys={['ewchart']}
           style={{ height: '100%', borderRight: 0 }}
           items={menus}
           onSelect={({ key, keyPath, selectedKeys, domEvent }) => {
-            if (key === '1-1') {
-              navigate('page1');
-            } else {
-              navigate('page2');
-            }
+            navigate(selectedKeys[0]);
             setSelectedKeys(selectedKeys);
           }}
         />
@@ -60,10 +56,6 @@ const darkTunnelBaseTemplate = props => {
 
       <Content>
         <Layout style={{ padding: '0 24px 24px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>test</Breadcrumb.Item>
-            <Breadcrumb.Item>test1</Breadcrumb.Item>
-          </Breadcrumb>
           <Content style={{ padding: 24, margin: 0, minHeight: 280 }}>
             <Outlet />
           </Content>

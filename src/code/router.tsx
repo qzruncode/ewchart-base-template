@@ -2,7 +2,7 @@ import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import ErrorPage from './error-page';
 import App from './app';
-import Test1 from './page1';
+import Line from './line';
 import Test2 from './page2';
 
 const createRouter = () => {
@@ -13,8 +13,8 @@ const createRouter = () => {
       errorElement: <ErrorPage />,
       children: [
         {
-          path: 'page1',
-          element: <Test1 />,
+          path: '/line',
+          element: <Line />,
         },
         {
           path: 'page2',
