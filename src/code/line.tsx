@@ -1,7 +1,8 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import React, { useState } from 'react';
 import EWChart from 'ewchart';
-import { Breadcrumb } from 'antd';
+import { Breadcrumb, Button } from 'antd';
+import { disOrder } from './helper';
 
 const des = 
 `
@@ -54,13 +55,27 @@ const des =
 3. 在折线图中，如果需要将今天的数据和之前的数据做对比，之前的数据最好用虚线展示，以便区分
 `
 
+const arr1 = [
+  75, 25, 90, 251, 208, null, null, null, null, 60, 170, 248, 52, 238, 96, 132, 68, 253, 163, 98, 107, 155, 110, 82, 93, 148, 185, 111, 55, 63,
+];
+const arr2 = [
+  75, 132, 68, 253, 163, 98, 107, 25, 90, 251, 208, 56, 97, 79, 238, 96, 155, 110, 82, 93, 148, 185, 111, null, null, null, null, 19, 60, 63,
+]
+
 const Test = () => {
+  const [toDay, setToDay] = useState(arr1);
+  const [yesteDday, setYesteDday] = useState(arr2);
   return (
     <div className="test_box">
       <Breadcrumb style={{ margin: '16px 0' }}>
         <Breadcrumb.Item>ewchart</Breadcrumb.Item>
         <Breadcrumb.Item>line</Breadcrumb.Item>
       </Breadcrumb>
+
+      <Button onClick={() => {
+        setToDay(disOrder(toDay))
+        setYesteDday(disOrder(yesteDday))
+      }}>刷新</Button>
           
       <EWChart
         chart={{ type: 'line' }}
@@ -89,17 +104,13 @@ const Test = () => {
               label: '今天',
               break: 'line',
               breakType: 'dotted',
-              values: [
-                75, 25, 90, 251, 208, null, null, null, null, 60, 170, 248, 52, 238, 96, 132, 68, 253, 163, 98, 107, 155, 110, 82, 93, 148, 185, 111, 55, 63,
-              ],
+              values: toDay,
             },
             {
               lineType: 'dotted',
               label: '昨天',
               break: 'none',
-              values: [
-                75, 132, 68, 253, 163, 98, 107, 25, 90, 251, 208, 56, 97, 79, 238, 96, 155, 110, 82, 93, 148, 185, 111, null, null, null, null, 19, 60, 63,
-              ],
+              values: yesteDday,
             },
           ],
         }}
