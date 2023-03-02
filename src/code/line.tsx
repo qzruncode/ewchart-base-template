@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import EWChart, { EWChartData, getColorsByIndex } from 'ewchart';
 import { Breadcrumb, Button } from 'antd';
 import { disOrder } from './helper';
@@ -63,18 +63,15 @@ const arr2 = [
 ];
 
 const Line = () => {
-  const [toDay, setToDay] = useState(arr1);
-  const [yesteDday, setYesteDday] = useState(arr2);
   const [chooseIndex, setChooseIndex] = useState<number | undefined>(undefined);
-
-  const chartConfig: EWChartData = {
+  const [chartConfig, setChartConfig] = useState<EWChartData>({
     x: {
       start: 1677658584000, // 时间戳
       end: 1677658614000, // 时间戳
       interval: 1000, // 1秒，每个点的时间间隔
     },
     y: {
-      start: 10,
+      start: 0,
       end: 300,
     },
     yUnit: 'K',
@@ -84,20 +81,51 @@ const Line = () => {
         label: '今天',
         break: 'line',
         breakType: 'dotted',
-        values: toDay,
+        values: arr1,
       },
       {
         lineType: 'dotted',
         label: '昨天',
         break: 'none',
-        values: yesteDday,
+        values: arr2,
       },
     ],
-  };
+  })
 
   const handelFootClick = (i: number) => {
     setChooseIndex(i);
+    if(i !== undefined) {
+      const newChartConfig = Object.assign({}, chartConfig)
+      newChartConfig.groups = [newChartConfig.groups[i]];
+      const [start, end] = getExtent(newChartConfig.groups[i].values)
+      newChartConfig.y = { start, end };
+      setChartConfig(newChartConfig);
+    }
   };
+
+  const getExtent = (arr: Array<number | null>) => {
+    let max = Number.MIN_SAFE_INTEGER;
+    let min = Number.MAX_SAFE_INTEGER;
+
+    arr.forEach(d => {
+      if(d != null && max < d) {
+        max = d;
+      }
+      if(d != null && min > d) {
+        min = d;
+      }
+    })
+
+    return [max, min];
+  }
+
+  const handleRefresh = () => {
+    const newChartConfig = Object.assign({}, chartConfig)
+    newChartConfig.groups.forEach(group => {
+      group.values = disOrder(group.values);
+    })
+    setChartConfig(newChartConfig)
+  }
 
   return (
     <div className="test_box">
@@ -106,10 +134,7 @@ const Line = () => {
         <Breadcrumb.Item>line</Breadcrumb.Item>
       </Breadcrumb>
 
-      <Button onClick={() => {
-        setToDay(disOrder(toDay))
-        setYesteDday(disOrder(yesteDday))
-      }}>刷新</Button>
+      <Button onClick={handleRefresh}>刷新</Button>
           
       <EWChart
         chart={{ type: 'line' }}
@@ -127,7 +152,7 @@ const Line = () => {
       <div className="chart-foot">
         {chartConfig.groups.map((group, index) => {
           return (
-            <div className={'foot-item ' + (chooseIndex === index ? 'choosed' : 'no_choose')} key={index} onClick={() => handelFootClick(index)}>
+            <div className={'foot-item ' + ((chooseIndex === index || chooseIndex === undefined)? 'choosed' : 'no_choose')} key={index} onClick={() => handelFootClick(index)}>
               <span className="foot-dot" style={{ backgroundColor: getColorsByIndex(index) }}></span>
               <span className="foot-label">{group.label}</span>
             </div>
