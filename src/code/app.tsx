@@ -18,8 +18,8 @@ const menus = [
         label: '折线图',
       },
       {
-        key: '2-2',
-        label: '页面二',
+        key: 'tooltip',
+        label: 'tooltip',
       },
     ],
   },

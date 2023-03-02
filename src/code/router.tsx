@@ -3,7 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import ErrorPage from './error-page';
 import App from './app';
 import Line from './line';
-import Test2 from './page2';
+import Tooltip from './tooltip';
 
 const createRouter = () => {
   return createBrowserRouter([
@@ -13,12 +13,12 @@ const createRouter = () => {
       errorElement: <ErrorPage />,
       children: [
         {
-          path: '/line',
+          path: 'line',
           element: <Line />,
         },
         {
-          path: 'page2',
-          element: <Test2 />,
+          path: 'tooltip',
+          element: <Tooltip />,
         },
       ],
     },
