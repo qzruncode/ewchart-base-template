@@ -18,6 +18,10 @@ const menus = [
         label: '折线图',
       },
       {
+        key: 'foottab',
+        label: 'foottab',
+      },
+      {
         key: 'tooltip',
         label: 'tooltip',
       },

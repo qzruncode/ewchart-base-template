@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
-import EWChart, { EWChartData, getColorsByIndex } from 'ewchart';
+import EWChart, { EWChartData } from 'ewchart';
 import { Breadcrumb, Button } from 'antd';
 import { disOrder } from './helper';
 
@@ -61,63 +61,36 @@ const arr1 = [
 const arr2 = [
   75, 132, 68, 253, 163, 98, 107, 25, 90, 251, 208, 56, 97, 79, 238, 96, 155, 110, 82, 93, 148, 185, 111, null, null, null, null, 19, 60, 63,
 ];
+const initConfig: EWChartData = {
+  x: {
+    start: 1677658584000, // 时间戳
+    end: 1677658614000, // 时间戳
+    interval: 1000, // 1秒，每个点的时间间隔
+  },
+  y: {
+    start: 0,
+    end: 300,
+  },
+  yUnit: 'K',
+  groups: [
+    {
+      lineType: 'solid',
+      label: '今天',
+      break: 'line',
+      breakType: 'dotted',
+      values: arr1,
+    },
+    {
+      lineType: 'dotted',
+      label: '昨天',
+      break: 'none',
+      values: arr2,
+    },
+  ],
+};
 
 const Line = () => {
-  const [chooseIndex, setChooseIndex] = useState<number | undefined>(undefined);
-  const [chartConfig, setChartConfig] = useState<EWChartData>({
-    x: {
-      start: 1677658584000, // 时间戳
-      end: 1677658614000, // 时间戳
-      interval: 1000, // 1秒，每个点的时间间隔
-    },
-    y: {
-      start: 0,
-      end: 300,
-    },
-    yUnit: 'K',
-    groups: [
-      {
-        lineType: 'solid',
-        label: '今天',
-        break: 'line',
-        breakType: 'dotted',
-        values: arr1,
-      },
-      {
-        lineType: 'dotted',
-        label: '昨天',
-        break: 'none',
-        values: arr2,
-      },
-    ],
-  })
-
-  const handelFootClick = (i: number) => {
-    setChooseIndex(i);
-    if(i !== undefined) {
-      const newChartConfig = Object.assign({}, chartConfig)
-      newChartConfig.groups = [newChartConfig.groups[i]];
-      const [start, end] = getExtent(newChartConfig.groups[i].values)
-      newChartConfig.y = { start, end };
-      setChartConfig(newChartConfig);
-    }
-  };
-
-  const getExtent = (arr: Array<number | null>) => {
-    let max = Number.MIN_SAFE_INTEGER;
-    let min = Number.MAX_SAFE_INTEGER;
-
-    arr.forEach(d => {
-      if(d != null && max < d) {
-        max = d;
-      }
-      if(d != null && min > d) {
-        min = d;
-      }
-    })
-
-    return [max, min];
-  }
+  const [chartConfig, setChartConfig] = useState(initConfig)
 
   const handleRefresh = () => {
     const newChartConfig = Object.assign({}, chartConfig)
@@ -148,17 +121,6 @@ const Line = () => {
         }}
         data={chartConfig}
       />
-
-      <div className="chart-foot">
-        {chartConfig.groups.map((group, index) => {
-          return (
-            <div className={'foot-item ' + ((chooseIndex === index || chooseIndex === undefined)? 'choosed' : 'no_choose')} key={index} onClick={() => handelFootClick(index)}>
-              <span className="foot-dot" style={{ backgroundColor: getColorsByIndex(index) }}></span>
-              <span className="foot-label">{group.label}</span>
-            </div>
-          );
-        })}
-      </div>
 
       <pre>
         <code>{des}</code>
