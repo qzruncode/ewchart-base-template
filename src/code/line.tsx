@@ -4,8 +4,7 @@ import EWChart, { EWChartData } from 'ewchart';
 import { Breadcrumb, Button } from 'antd';
 import { disOrder } from './helper';
 
-const des = 
-`
+const des = `
 1. 折线图配置方式
 <EWChart
   chart={{ type: 'line' }}
@@ -53,7 +52,7 @@ const des =
   a. 缺失值不显示，在页面上呈现的结果就是直线被打成片段
   b. 将缺失值的头和尾连接起来，使直线显示完整
 3. 在折线图中，如果需要将今天的数据和之前的数据做对比，之前的数据最好用虚线展示，以便区分
-`
+`;
 
 const arr1 = [
   75, 25, 90, 251, 208, null, null, null, null, 60, 170, 248, 52, 238, 96, 132, 68, 253, 163, 98, 107, 155, 110, 82, 93, 148, 185, 111, 55, 63,
@@ -90,15 +89,15 @@ const initConfig: EWChartData = {
 };
 
 const Line = () => {
-  const [chartConfig, setChartConfig] = useState(initConfig)
+  const [chartConfig, setChartConfig] = useState(initConfig);
 
   const handleRefresh = () => {
-    const newChartConfig = Object.assign({}, chartConfig)
+    const newChartConfig = Object.assign({}, chartConfig);
     newChartConfig.groups.forEach(group => {
       group.values = disOrder(group.values);
-    })
-    setChartConfig(newChartConfig)
-  }
+    });
+    setChartConfig(newChartConfig);
+  };
 
   return (
     <div className="test_box">
@@ -108,9 +107,9 @@ const Line = () => {
       </Breadcrumb>
 
       <Button onClick={handleRefresh}>刷新</Button>
-          
+
       <EWChart
-        chart={{ type: 'line' }}
+        type="line"
         size={{
           // 宽度自适应
           height: 300,

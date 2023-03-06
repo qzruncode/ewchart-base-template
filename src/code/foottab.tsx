@@ -158,7 +158,7 @@ const Line = () => {
       <Button onClick={handleRefresh}>刷新</Button>
           
       <EWChart
-        chart={{ type: 'line' }}
+        type="line"
         size={{
           // 宽度自适应
           height: 300,

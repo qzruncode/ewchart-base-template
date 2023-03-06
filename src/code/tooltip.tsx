@@ -50,7 +50,7 @@ const chartSizeParams = {
   left: 30,
 };
 
-const Tooltip = () => {
+const LineChart = () => {
   const tooltipRef = useRef(null);
   const [toDay, setToDay] = useState(arr1);
 
@@ -92,7 +92,7 @@ const Tooltip = () => {
           tooltipRef.current.style.left = position.x + 20 + 'px';
         }
 
-        tooltipRef.current.style.top = position.y + 20 + 'px';
+        tooltipRef.current.style.top = position.y + tooltipRef.current.offsetHeight + 20 + 'px';
         let html = '';
         data.forEach(d => {
           html += `<div className="title"><span>${d.label}</span>：<span>${d.value}</span></div>`;
@@ -112,12 +112,7 @@ const Tooltip = () => {
   };
 
   return (
-    <div className="test_box">
-      <Breadcrumb style={{ margin: '16px 0' }}>
-        <Breadcrumb.Item>ewchart</Breadcrumb.Item>
-        <Breadcrumb.Item>line</Breadcrumb.Item>
-      </Breadcrumb>
-
+    <div className="my-chart">
       <Button
         onClick={() => {
           setToDay(disOrder(toDay));
@@ -125,36 +120,55 @@ const Tooltip = () => {
         刷新
       </Button>
 
-      <div className="my-chart">
-        <EWChart
-          chart={{ type: 'line' }}
-          size={chartSizeParams}
-          data={{
-            x: {
-              start: 1677658584000, // 时间戳
-              end: 1677658614000, // 时间戳
-              interval: 1000, // 1秒，每个点的时间间隔
+      <EWChart
+        type='line'
+        size={chartSizeParams}
+        data={{
+          x: {
+            start: 1677658584000, // 时间戳
+            end: 1677658614000, // 时间戳
+            interval: 1000, // 1秒，每个点的时间间隔
+          },
+          y: {
+            start: 10,
+            end: 300,
+          },
+          yUnit: 'K',
+          groups: [
+            {
+              lineType: 'solid',
+              label: '今天',
+              break: 'line',
+              breakType: 'dotted',
+              values: toDay,
             },
-            y: {
-              start: 10,
-              end: 300,
-            },
-            yUnit: 'K',
-            groups: [
-              {
-                lineType: 'solid',
-                label: '今天',
-                break: 'line',
-                breakType: 'dotted',
-                values: toDay,
-              },
-            ],
-          }}
-          onMove={handleMove}
-        />
+          ],
+        }}
+        method={{
+          onMove: handleMove,
+        }}
+        interactive={{
+          mouse: {
+            crossText: true, // 是否展示y坐标实时文本
+          }
+        }}
+      />
 
-        <div className="chart-tooltip" ref={tooltipRef}></div>
-      </div>
+      <div className="chart-tooltip" ref={tooltipRef}></div>
+    </div>
+  );
+};
+
+const Tooltip = () => {
+  return (
+    <div className="test_box">
+      <Breadcrumb style={{ margin: '16px 0' }}>
+        <Breadcrumb.Item>ewchart</Breadcrumb.Item>
+        <Breadcrumb.Item>line</Breadcrumb.Item>
+      </Breadcrumb>
+
+      <LineChart />
+      <LineChart />
 
       <pre>
         <code>{des}</code>
