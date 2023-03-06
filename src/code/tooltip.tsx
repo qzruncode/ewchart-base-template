@@ -15,6 +15,15 @@ const arr1 = [
 
 const Tooltip = () => {
   const [toDay, setToDay] = useState(arr1);
+
+  const handleMove = (
+    type: 'enter' | 'move' | 'leave', // 鼠标事件类型
+    data: Array<{ color?: string; label: string; value: number | null; x: number; y: number }>, // 当前点的信息
+    position: { x: number; y: number } // 鼠标的实时位置
+  ) => {
+    console.log('handleMove', type, data, position);
+  }
+
   return (
     <div className="test_box">
       <Breadcrumb style={{ margin: '16px 0' }}>
@@ -57,6 +66,7 @@ const Tooltip = () => {
             },
           ],
         }}
+        onMove={handleMove}
       />
 
       <pre>
