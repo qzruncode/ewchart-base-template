@@ -3,6 +3,18 @@
   height: 100%;
   padding: 10px;
   overflow: auto;
+  .my-chart {
+    position: relative;
+    .chart-tooltip {
+      position: absolute;
+      top: 0;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 5px;
+      width: max-content;
+    }
+  }
   .chart-foot {
     display: flex;
     justify-content: center;
@@ -20,10 +32,10 @@
         margin-left: 2px;
       }
     }
-    .no_choose{
+    .no_choose {
       opacity: 0.35;
     }
-    .choosed{
+    .choosed {
       opacity: 1;
     }
   }
