@@ -38,6 +38,7 @@ const darkTunnelBaseTemplate = props => {
     if (location.pathname === '/') {
       navigate('line');
     } else {
+      setSelectedKeys([location.pathname.slice(1)]);
       navigate(location.pathname);
     }
   }, []);
