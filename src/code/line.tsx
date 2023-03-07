@@ -7,7 +7,7 @@ import { disOrder } from './helper';
 const des = `
 1. 折线图配置方式
 <EWChart
-  chart={{ type: 'line' }}
+  type="line"
   size={{
     // 宽度自适应
     height: 300,
