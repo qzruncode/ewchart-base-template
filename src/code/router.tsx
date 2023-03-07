@@ -27,6 +27,10 @@ const createRouter = () => {
           path: 'coordinate-tooltip',
           element: <LazyWrapper Lazy={React.lazy(() => import('./coordinateTooltip'))} />,
         },
+        {
+          path: 'range',
+          element: <LazyWrapper Lazy={React.lazy(() => import('./range'))} />,
+        },
       ],
     },
   ]);

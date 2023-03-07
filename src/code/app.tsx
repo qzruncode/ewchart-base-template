@@ -29,6 +29,10 @@ const menus = [
         key: 'coordinate-tooltip',
         label: '协同tooltip',
       },
+      {
+        key: 'range',
+        label: '范围选择',
+      },
     ],
   },
 ];

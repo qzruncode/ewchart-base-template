@@ -5,7 +5,7 @@ import { Breadcrumb, Button } from 'antd';
 import { disOrder } from './helper';
 
 const des = `
-1. 在实际开发中可能会遇到要对两个图进行实时对比的场景，为了能够实现这一功能，ewchart在tooltip上提供了协同的功能
+1. 在实际开发中可能会遇到要对两个图进行实时对比的场景，为了能够实现这一功能，ewchart在tooltip上提供了协同tooltip
 2. 示例代码
   <EWChart
     ...
@@ -197,8 +197,8 @@ const LineChart = ({ group }) => {
           onMove: handleMove,
         }}
         interactive={{
+          group: group, // 分组，开启同组交互协同
           mouse: {
-            group: group, // 分组，开启同组交互协同
             crossText: true, // 是否展示y坐标实时文本
           },
         }}
