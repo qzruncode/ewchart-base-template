@@ -5,39 +5,8 @@ import { Breadcrumb, Button } from 'antd';
 import { disOrder } from './helper';
 
 const des = `
-1. tooltip属于绘图外的功能，具有强自定义属性，ewchart将此功能提供给用户自定义实现，具体实现方式参见此demo源码
-2. 简略版示例代码
-  const handleMove = (
-    type: 'enter' | 'move' | 'leave', // 鼠标事件类型
-    data: Array<{ color?: string; label: string; value: number | null; x: number; y: number }>, // 当前点的信息
-    position: { x: number; y: number } // 鼠标的实时位置
-  ) => {
-    if (tooltipRef.current) {
-      if (type === 'move') {
-        const maxOffsetX = position.x + tooltipRef.current.offsetWidth + 20;
-        if (maxOffsetX < tooltipRef.current.parentElement.offsetWidth) {
-          tooltipRef.current.style.left = position.x + 20 + 'px';
-        }
-
-        tooltipRef.current.style.top = position.y + tooltipRef.current.offsetHeight + 20 + 'px';
-        let html = '';
-        data.forEach(d => {
-          html += \`<div className="title"><span>\${d.label}</span>：<span>\${d.value}</span></div>\`;
-        });
-        if (html === '') {
-          tooltipRef.current.style.display = 'none';
-        } else {
-          tooltipRef.current.style.display = 'block';
-          tooltipRef.current.innerHTML = html;
-        }
-      } else if (type === 'enter') {
-        tooltipRef.current.style.display = 'block';
-      } else if (type === 'leave') {
-        tooltipRef.current.style.display = 'none';
-      }
-    }
-  };
-
+1. 在实际开发中可能会遇到要对两个图进行实时对比的场景，为了能够实现这一功能，ewchart在tooltip上提供了协同的功能
+2. 示例代码
   <EWChart
     ...
     method={{
@@ -45,11 +14,47 @@ const des = `
     }}
     interactive={{
       mouse: {
+        group: "one", // 分组，开启同组交互协同
         crossText: true, // 是否展示y坐标实时文本
-      }
+      },
     }}
   />
-  <div className="chart-tooltip" ref={tooltipRef}></div>
+  <EWChart
+    ...
+    method={{
+      onMove: handleMove,
+    }}
+    interactive={{
+      mouse: {
+        group: "two", // 分组，开启同组交互协同
+        crossText: true, // 是否展示y坐标实时文本
+      },
+    }}
+  />
+  <EWChart
+    ...
+    method={{
+      onMove: handleMove,
+    }}
+    interactive={{
+      mouse: {
+        group: "two", // 分组，开启同组交互协同
+        crossText: true, // 是否展示y坐标实时文本
+      },
+    }}
+  />
+  <EWChart
+    ...
+    method={{
+      onMove: handleMove,
+    }}
+    interactive={{
+      mouse: {
+        group: "one", // 分组，开启同组交互协同
+        crossText: true, // 是否展示y坐标实时文本
+      },
+    }}
+  />
 `;
 
 const arr1 = [
@@ -94,7 +99,7 @@ const chartSizeParams = {
   left: 30,
 };
 
-const LineChart = () => {
+const LineChart = ({ group }) => {
   const tooltipRef = useRef(null);
   const [toDay, setToDay] = useState(arr1);
 
@@ -156,7 +161,7 @@ const LineChart = () => {
   };
 
   return (
-    <div className="my-chart">
+    <div className="my-chart" style={{ flex: '1', minWidth: 500 }}>
       <Button
         onClick={() => {
           setToDay(disOrder(toDay));
@@ -165,7 +170,7 @@ const LineChart = () => {
       </Button>
 
       <EWChart
-        type='line'
+        type="line"
         size={chartSizeParams}
         data={{
           x: {
@@ -193,8 +198,9 @@ const LineChart = () => {
         }}
         interactive={{
           mouse: {
+            group: group, // 分组，开启同组交互协同
             crossText: true, // 是否展示y坐标实时文本
-          }
+          },
         }}
       />
 
@@ -206,7 +212,12 @@ const LineChart = () => {
 const Tooltip = () => {
   return (
     <div className="test_box">
-      <LineChart />
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        <LineChart group="one" />
+        <LineChart group="two" />
+        <LineChart group="two" />
+        <LineChart group="one" />
+      </div>
 
       <pre>
         <code>{des}</code>

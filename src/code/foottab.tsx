@@ -150,11 +150,6 @@ const Line = () => {
 
   return (
     <div className="test_box">
-      <Breadcrumb style={{ margin: '16px 0' }}>
-        <Breadcrumb.Item>ewchart</Breadcrumb.Item>
-        <Breadcrumb.Item>foottab</Breadcrumb.Item>
-      </Breadcrumb>
-
       <Button onClick={handleRefresh}>刷新</Button>
           
       <EWChart

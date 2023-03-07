@@ -25,6 +25,10 @@ const menus = [
         key: 'tooltip',
         label: 'tooltip',
       },
+      {
+        key: 'coordinate-tooltip',
+        label: '协同tooltip',
+      },
     ],
   },
 ];
