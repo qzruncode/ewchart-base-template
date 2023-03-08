@@ -16,6 +16,10 @@ const createRouter = () => {
           element: <LazyWrapper Lazy={React.lazy(() => import('./line'))} />,
         },
         {
+          path: 'area-line',
+          element: <LazyWrapper Lazy={React.lazy(() => import('./arealine'))} />,
+        },
+        {
           path: 'foottab',
           element: <LazyWrapper Lazy={React.lazy(() => import('./foottab'))} />,
         },

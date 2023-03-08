@@ -18,6 +18,10 @@ const menus = [
         label: '折线图',
       },
       {
+        key: 'area-line',
+        label: '折线面积图',
+      },
+      {
         key: 'foottab',
         label: 'foottab',
       },

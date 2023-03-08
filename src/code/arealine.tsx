@@ -4,20 +4,6 @@ import { Breadcrumb, Button } from 'antd';
 import { disOrder } from './helper';
 
 const des = `
-1. 实际业务中会遇到需要在图上选择一部分区域放大查看，并且能够获取选中范围的起始时间和结束时间，具体细节请参考本demo源码
-2. 示例代码
-  const handleSelect = (dateRange: Date[]) => { };
-  <EWChart
-    ...
-    method={{
-      onSelect: handleSelect,
-    }}
-    interactive={{
-      select: {
-        min: 5, // 最小的选中范围的点个数
-      },
-    }}
-  />
 `;
 
 const arr1 = [
@@ -62,7 +48,7 @@ const chartSizeParams = {
   left: 30,
 };
 
-const LineChart = ({ handleSelect }) => {
+const LineChart = () => {
   const [toDay, setToDay] = useState(arr1);
   return (
     <div className="my-chart">
@@ -73,7 +59,7 @@ const LineChart = ({ handleSelect }) => {
         刷新
       </Button>
       <EWChart
-        type="line"
+        type="arealine"
         size={chartSizeParams}
         data={{
           x: {
@@ -96,32 +82,15 @@ const LineChart = ({ handleSelect }) => {
             },
           ],
         }}
-        method={{
-          onSelect: handleSelect,
-        }}
-        interactive={{
-          select: {
-            min: 5, // 最小的选中范围中允许出现的点个数
-          },
-        }}
       />
     </div>
   );
 };
 
 const Tooltip = () => {
-  const [dateText, setDateText] = useState('暂无数据');
-
-  const handleSelect = (dateRange: Date[]) => {
-    setDateText(dateRange[0].toLocaleTimeString() + '~' + dateRange[1].toLocaleTimeString());
-  };
-
-  const Line = useMemo(() => <LineChart handleSelect={handleSelect} />, []); // 必须使用useMemo避免react重绘丢掉ewchart中的状态
-
   return (
     <div className="test_box">
-      {Line}
-      选择的时间：{dateText}
+      <LineChart />
       <pre>
         <code>{des}</code>
       </pre>
