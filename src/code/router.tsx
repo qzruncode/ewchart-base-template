@@ -35,6 +35,10 @@ const createRouter = () => {
           path: 'range',
           element: <LazyWrapper Lazy={React.lazy(() => import('./range'))} />,
         },
+        {
+          path: 'pie',
+          element: <LazyWrapper Lazy={React.lazy(() => import('./pie'))} />,
+        },
       ],
     },
   ]);

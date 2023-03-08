@@ -37,6 +37,10 @@ const menus = [
         key: 'range',
         label: '范围选择',
       },
+      {
+        key: 'pie',
+        label: '饼图',
+      },
     ],
   },
 ];

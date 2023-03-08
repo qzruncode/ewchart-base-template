@@ -4,6 +4,11 @@ import { Breadcrumb, Button } from 'antd';
 import { disOrder } from './helper';
 
 const des = `
+1. 只需要改type为arealine，其他操作同折线图
+  <EWChart
+    type="arealine"
+    ...
+  />
 `;
 
 const arr1 = [
