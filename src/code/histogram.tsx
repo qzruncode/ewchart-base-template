@@ -94,7 +94,11 @@ const PieChart = () => {
     <div className="my-chart">
       <Button
         onClick={() => {
-          setPieData(disOrder(pieData));
+          const newData = [...pieData];
+          newData.forEach(d => {
+            d.values = disOrder(d.values);
+          });
+          setPieData(newData);
         }}>
         刷新
       </Button>
