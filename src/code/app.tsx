@@ -41,6 +41,10 @@ const menus = [
         key: 'pie',
         label: '饼图',
       },
+      {
+        key: 'histogram',
+        label: '直方图',
+      },
     ],
   },
 ];
