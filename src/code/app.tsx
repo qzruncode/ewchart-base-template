@@ -49,6 +49,10 @@ const menus = [
         key: 'scatter',
         label: '散点图',
       },
+      {
+        key: 'tree',
+        label: '树形图',
+      },
     ],
   },
 ];

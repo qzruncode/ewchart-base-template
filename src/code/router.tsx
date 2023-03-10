@@ -47,6 +47,10 @@ const createRouter = () => {
           path: 'scatter',
           element: <LazyWrapper Lazy={React.lazy(() => import('./scatter'))} />,
         },
+        {
+          path: 'tree',
+          element: <LazyWrapper Lazy={React.lazy(() => import('./tree'))} />,
+        },
       ],
     },
   ]);
