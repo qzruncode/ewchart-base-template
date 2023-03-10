@@ -45,6 +45,10 @@ const menus = [
         key: 'histogram',
         label: '直方图',
       },
+      {
+        key: 'scatter',
+        label: '散点图',
+      },
     ],
   },
 ];
