@@ -5,7 +5,60 @@ import { Button } from 'antd';
 import { disOrder } from './helper';
 
 const des = `
-1. 
+示例代码，具体请查看此demo源码
+const initConfig = {
+  x: {
+    start: 1677658584000, // 时间戳
+    end: 1677658614000, // 时间戳
+    interval: 1000, // 1秒，每个点的时间间隔
+  },
+  y: {
+    start: 0,
+    end: 300,
+  },
+  yUnit: 'K',
+  pointType: 'fill', // fill实心 stroke空心
+  pointSize: 5, // 点大小
+  groups: [
+    {
+      lineType: 'solid',
+      label: '今天',
+      values: arr1,
+    },
+    {
+      lineType: 'dotted',
+      label: '昨天',
+      values: arr2,
+    },
+  ],
+};
+
+const [chartConfig, setChartConfig] = useState(initConfig)
+
+<EWChart
+  type="scatter"
+  size={{
+    // 宽度自适应
+    height: 300,
+    top: 20,
+    right: 30,
+    bottom: 30,
+    left: 30,
+  }}
+  data={chartConfig as EWChartData}
+  method={{
+    onMove: handleMove,
+    onSelect: handleSelect,
+  }}
+  interactive={{
+    mouse: {
+      crossText: true, // 是否展示y坐标实时文本
+    },
+    select: {
+      min: 5, // 最小的选中范围中允许出现的点个数
+    },
+  }}
+/>
 `;
 
 const arr1 = [
