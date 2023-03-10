@@ -4,32 +4,55 @@ import { Button } from 'antd';
 import { disOrder } from './helper';
 
 const des = `
+示例代码，具体请查看此demo源码
+<EWChart
+  type="histogram"
+  size={chartSizeParams}
+  data={{
+    groups: histogramData,
+    y: {
+      start: 0,
+      end: 40000,
+    },
+    yUnit: 'K',
+    gap: 5, // 柱子之间的间隙
+    maxWidth: 30, // 柱子最大的宽度
+  }}
+  method={{
+    onMove: handleMove,
+  }}
+  interactive={{
+    mouse: {
+      barText: true, // 是否展示选中柱子上方的文字
+    },
+  }}
+/>
 `;
 
 const arr = [
   {
     label: 'a1-longlonglonglongtext',
-    values: [29649],
+    values: [29649, 5287],
   },
   {
     label: 'a2-longlonglonglongtext',
-    values: [5287],
+    values: [5287, 4723],
   },
   {
     label: 'a3-longlonglonglongtext',
-    values: [4723],
+    values: [4723, 3210],
   },
   {
     label: 'a4-longlonglonglongtext',
-    values: [3210],
+    values: [3210, 31561],
   },
   {
     label: 'a5-longlonglonglongtext',
-    values: [31561],
+    values: [31561, 29649],
   },
   {
     label: 'a6-longlonglonglongtext',
-    values: [29649],
+    values: [29649, 3210],
   },
 ];
 
@@ -118,6 +141,11 @@ const HistogramChart = () => {
         }}
         method={{
           onMove: handleMove,
+        }}
+        interactive={{
+          mouse: {
+            barText: true, // 是否展示选中柱子上方的文字
+          },
         }}
       />
 
