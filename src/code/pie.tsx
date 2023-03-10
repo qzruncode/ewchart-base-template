@@ -68,27 +68,21 @@ const PieChart = () => {
   ) => {
     if (tooltipRef.current) {
       if (type === 'move') {
-        if (type === 'move') {
-          const maxOffsetX = position.x + tooltipRef.current.offsetWidth + 20;
-          if (maxOffsetX < tooltipRef.current.parentElement.offsetWidth) {
-            tooltipRef.current.style.left = position.x + 20 + 'px';
-          }
+        const maxOffsetX = position.x + tooltipRef.current.offsetWidth + 20;
+        if (maxOffsetX < tooltipRef.current.parentElement.offsetWidth) {
+          tooltipRef.current.style.left = position.x + 20 + 'px';
+        }
 
-          tooltipRef.current.style.top = position.y + tooltipRef.current.offsetHeight + 20 + 'px';
-          let html = '';
-          data.forEach(d => {
-            html += `<div className="title"><span>${d.label}</span>：<span>${d.value}</span></div>`;
-          });
-          if (html === '') {
-            tooltipRef.current.style.display = 'none';
-          } else {
-            tooltipRef.current.style.display = 'block';
-            tooltipRef.current.innerHTML = html;
-          }
-        } else if (type === 'enter') {
-          tooltipRef.current.style.display = 'block';
-        } else if (type === 'leave') {
+        tooltipRef.current.style.top = position.y + tooltipRef.current.offsetHeight + 20 + 'px';
+        let html = '';
+        data.forEach(d => {
+          html += `<div className="title"><span>${d.label}</span>：<span>${d.value}</span></div>`;
+        });
+        if (html === '') {
           tooltipRef.current.style.display = 'none';
+        } else {
+          tooltipRef.current.style.display = 'block';
+          tooltipRef.current.innerHTML = html;
         }
       } else if (type === 'enter') {
         tooltipRef.current.style.display = 'block';

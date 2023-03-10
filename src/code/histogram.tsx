@@ -8,28 +8,28 @@ const des = `
 
 const arr = [
   {
-    label: 'a1',
-    values: [29649, 5287],
+    label: 'a1-longlonglonglongtext',
+    values: [29649],
   },
   {
-    label: 'a2',
-    values: [5287, 5287],
+    label: 'a2-longlonglonglongtext',
+    values: [5287],
   },
   {
-    label: 'a3',
-    values: [4723, 5287],
+    label: 'a3-longlonglonglongtext',
+    values: [4723],
   },
   {
-    label: 'a4',
-    values: [3210, 5287],
+    label: 'a4-longlonglonglongtext',
+    values: [3210],
   },
   {
-    label: 'a5',
-    values: [31561, 5287],
+    label: 'a5-longlonglonglongtext',
+    values: [31561],
   },
   {
-    label: 'a6',
-    values: [29649, 5287],
+    label: 'a6-longlonglonglongtext',
+    values: [29649],
   },
 ];
 
@@ -53,37 +53,30 @@ const HistogramChart = () => {
     data: Array<{ color?: string; label: string; value: number | null }>, // 当前点的信息
     position: { x: number; y: number } // 鼠标的实时位置
   ) => {
-    console.log(type, data, position);
-    // if (tooltipRef.current) {
-    //   if (type === 'move') {
-    //     if (type === 'move') {
-    //       const maxOffsetX = position.x + tooltipRef.current.offsetWidth + 20;
-    //       if (maxOffsetX < tooltipRef.current.parentElement.offsetWidth) {
-    //         tooltipRef.current.style.left = position.x + 20 + 'px';
-    //       }
+    if (tooltipRef.current) {
+      if (type === 'move') {
+        const maxOffsetX = position.x + tooltipRef.current.offsetWidth + 20;
+        if (maxOffsetX < tooltipRef.current.parentElement.offsetWidth) {
+          tooltipRef.current.style.left = position.x + 20 + 'px';
+        }
 
-    //       tooltipRef.current.style.top = position.y + tooltipRef.current.offsetHeight + 20 + 'px';
-    //       let html = '';
-    //       data.forEach(d => {
-    //         html += `<div className="title"><span>${d.label}</span>：<span>${d.value}</span></div>`;
-    //       });
-    //       if (html === '') {
-    //         tooltipRef.current.style.display = 'none';
-    //       } else {
-    //         tooltipRef.current.style.display = 'block';
-    //         tooltipRef.current.innerHTML = html;
-    //       }
-    //     } else if (type === 'enter') {
-    //       tooltipRef.current.style.display = 'block';
-    //     } else if (type === 'leave') {
-    //       tooltipRef.current.style.display = 'none';
-    //     }
-    //   } else if (type === 'enter') {
-    //     tooltipRef.current.style.display = 'block';
-    //   } else if (type === 'leave') {
-    //     tooltipRef.current.style.display = 'none';
-    //   }
-    // }
+        tooltipRef.current.style.top = position.y + tooltipRef.current.offsetHeight + 20 + 'px';
+        let html = '';
+        data.forEach(d => {
+          html += `<div className="title"><span>${d.label}</span>：<span>${d.value}</span></div>`;
+        });
+        if (html === '') {
+          tooltipRef.current.style.display = 'none';
+        } else {
+          tooltipRef.current.style.display = 'block';
+          tooltipRef.current.innerHTML = html;
+        }
+      } else if (type === 'enter') {
+        tooltipRef.current.style.display = 'block';
+      } else if (type === 'leave') {
+        tooltipRef.current.style.display = 'none';
+      }
+    }
   };
 
   const handelFootClick = (i: number) => {
@@ -126,12 +119,6 @@ const HistogramChart = () => {
         method={{
           onMove: handleMove,
         }}
-        // interactive={{
-        //   mouse: {
-        //     shadow: true, // 是否展示选中pie的阴影
-        //     pieText: true, // 是否展示选中pie的提示文字
-        //   },
-        // }}
       />
 
       <div className="chart-tooltip" ref={tooltipRef}></div>
