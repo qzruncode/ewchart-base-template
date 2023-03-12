@@ -1,0 +1,84 @@
+{
+  "name": "a-longlonglonglonglonglongtext",
+  "head": [
+    "<rect fill=\"rgb(246, 147, 67)\" x=\"2\" y=\"2\" stroke=\"none\" rx=\"2\" ry=\"2\" stroke-width=\"0.5\" width=\"20\" height=\"10\"></rect><text dy=\"0.31em\" x=\"3\" y=\"7\" text-anchor=\"start\" stroke=\"none\" fill=\"white\" font-size=\"8\" textLength=\"18\">测试</text>",
+    "<rect fill=\"rgb(255, 210, 173)\" x=\"2\" y=\"2\" stroke=\"none\" rx=\"2\" ry=\"2\" stroke-width=\"0.5\" width=\"20\" height=\"10\"></rect><text dy=\"0.31em\" x=\"3\" y=\"7\" text-anchor=\"start\" stroke=\"none\" fill=\"white\" font-size=\"8\" textLength=\"18\">正式</text>"
+  ],
+  "bottom": [
+    "<rect fill=\"#d3d3d3\" x=\"1\" y=\"1\" width=\"98\" height=\"10\"></rect><rect x=\"1\" y=\"1\" fill=\"#ff8882\" height=\"10\" width=\"98\"></rect><text dy=\"0.31em\" x=\"50\" y=\"5\" text-anchor=\"middle\" stroke=\"none\" fill=\"white\" font-size=\"8\">7ms</text>"
+  ],
+  "children": [
+    {
+      "name": "b-longlonglonglonglonglongtext",
+      "head": [
+        "<rect fill=\"rgb(246, 147, 67)\" x=\"2\" y=\"2\" stroke=\"none\" rx=\"2\" ry=\"2\" stroke-width=\"0.5\" width=\"20\" height=\"10\"></rect><text dy=\"0.31em\" x=\"3\" y=\"7\" text-anchor=\"start\" stroke=\"none\" fill=\"white\" font-size=\"8\" textLength=\"18\">测试</text>",
+        "<rect fill=\"rgb(255, 210, 173)\" x=\"2\" y=\"2\" stroke=\"none\" rx=\"2\" ry=\"2\" stroke-width=\"0.5\" width=\"20\" height=\"10\"></rect><text dy=\"0.31em\" x=\"3\" y=\"7\" text-anchor=\"start\" stroke=\"none\" fill=\"white\" font-size=\"8\" textLength=\"18\">正式</text>"
+      ],
+      "bottom": [
+        "<rect fill=\"#d3d3d3\" x=\"1\" y=\"1\" width=\"98\" height=\"10\"></rect><rect x=\"1\" y=\"1\" fill=\"#ff8882\" height=\"10\" width=\"98\"></rect><text dy=\"0.31em\" x=\"50\" y=\"5\" text-anchor=\"middle\" stroke=\"none\" fill=\"white\" font-size=\"8\">7ms</text>"
+      ]
+    },
+    {
+      "name": "c-longlonglonglonglonglongtext",
+      "head": [
+        "<rect fill=\"rgb(246, 147, 67)\" x=\"2\" y=\"2\" stroke=\"none\" rx=\"2\" ry=\"2\" stroke-width=\"0.5\" width=\"20\" height=\"10\"></rect><text dy=\"0.31em\" x=\"3\" y=\"7\" text-anchor=\"start\" stroke=\"none\" fill=\"white\" font-size=\"8\" textLength=\"18\">测试</text>",
+        "<rect fill=\"rgb(255, 210, 173)\" x=\"2\" y=\"2\" stroke=\"none\" rx=\"2\" ry=\"2\" stroke-width=\"0.5\" width=\"20\" height=\"10\"></rect><text dy=\"0.31em\" x=\"3\" y=\"7\" text-anchor=\"start\" stroke=\"none\" fill=\"white\" font-size=\"8\" textLength=\"18\">正式</text>"
+      ],
+      "bottom": [
+        "<rect fill=\"#d3d3d3\" x=\"1\" y=\"1\" width=\"98\" height=\"10\"></rect>\n<rect x=\"1\" y=\"1\" fill=\"#86bd10\" x=\"-35\" height=\"10\" width=\"84\"></rect><text x=\"50\" dy=\"0.31em\" y=\"5\" text-anchor=\"middle\" stroke=\"none\" fill=\"white\" font-size=\"8\">6ms</text>"
+      ]
+    },
+    {
+      "name": "d-longlonglonglonglonglongtext",
+      "head": [
+        "<rect fill=\"rgb(246, 147, 67)\" x=\"2\" y=\"2\" stroke=\"none\" rx=\"2\" ry=\"2\" stroke-width=\"0.5\" width=\"20\" height=\"10\"></rect><text dy=\"0.31em\" x=\"3\" y=\"7\" text-anchor=\"start\" stroke=\"none\" fill=\"white\" font-size=\"8\" textLength=\"18\">测试</text>",
+        "<rect fill=\"rgb(255, 210, 173)\" x=\"2\" y=\"2\" stroke=\"none\" rx=\"2\" ry=\"2\" stroke-width=\"0.5\" width=\"20\" height=\"10\"></rect><text dy=\"0.31em\" x=\"3\" y=\"7\" text-anchor=\"start\" stroke=\"none\" fill=\"white\" font-size=\"8\" textLength=\"18\">正式</text>"
+      ],
+      "bottom": [
+        "<rect fill=\"#d3d3d3\" x=\"1\" y=\"1\" width=\"98\" height=\"10\"></rect><rect x=\"1\" y=\"1\" fill=\"#ff8882\" height=\"10\" width=\"98\"></rect><text dy=\"0.31em\" x=\"50\" y=\"5\" text-anchor=\"middle\" stroke=\"none\" fill=\"white\" font-size=\"8\">7ms</text>"
+      ],
+      "children": [
+        {
+          "name": "e-longlonglonglonglonglongtext",
+          "head": [
+            "<rect fill=\"rgb(246, 147, 67)\" x=\"2\" y=\"2\" stroke=\"none\" rx=\"2\" ry=\"2\" stroke-width=\"0.5\" width=\"20\" height=\"10\"></rect><text dy=\"0.31em\" x=\"3\" y=\"7\" text-anchor=\"start\" stroke=\"none\" fill=\"white\" font-size=\"8\" textLength=\"18\">测试</text>",
+            "<rect fill=\"rgb(255, 210, 173)\" x=\"2\" y=\"2\" stroke=\"none\" rx=\"2\" ry=\"2\" stroke-width=\"0.5\" width=\"20\" height=\"10\"></rect><text dy=\"0.31em\" x=\"3\" y=\"7\" text-anchor=\"start\" stroke=\"none\" fill=\"white\" font-size=\"8\" textLength=\"18\">正式</text>"
+          ],
+          "bottom": [
+            "<rect fill=\"#d3d3d3\" x=\"1\" y=\"1\" width=\"98\" height=\"10\"></rect><rect x=\"1\" y=\"1\" fill=\"#ff8882\" height=\"10\" width=\"98\"></rect><text dy=\"0.31em\" x=\"50\" y=\"5\" text-anchor=\"middle\" stroke=\"none\" fill=\"white\" font-size=\"8\">7ms</text>"
+          ]
+        },
+        {
+          "name": "f-longlonglonglonglonglongtext",
+          "head": [
+            "<rect fill=\"rgb(246, 147, 67)\" x=\"2\" y=\"2\" stroke=\"none\" rx=\"2\" ry=\"2\" stroke-width=\"0.5\" width=\"20\" height=\"10\"></rect><text dy=\"0.31em\" x=\"3\" y=\"7\" text-anchor=\"start\" stroke=\"none\" fill=\"white\" font-size=\"8\" textLength=\"18\">测试</text>",
+            "<rect fill=\"rgb(255, 210, 173)\" x=\"2\" y=\"2\" stroke=\"none\" rx=\"2\" ry=\"2\" stroke-width=\"0.5\" width=\"20\" height=\"10\"></rect><text dy=\"0.31em\" x=\"3\" y=\"7\" text-anchor=\"start\" stroke=\"none\" fill=\"white\" font-size=\"8\" textLength=\"18\">正式</text>"
+          ],
+          "bottom": [
+            "<rect fill=\"#d3d3d3\" x=\"1\" y=\"1\" width=\"98\" height=\"10\"></rect><rect x=\"1\" y=\"1\" fill=\"#86bd10\" x=\"-21\" height=\"10\" width=\"14\"></rect><text dy=\"0.31em\" x=\"50\" y=\"5\" text-anchor=\"middle\" stroke=\"none\" fill=\"white\" font-size=\"8\">1ms</text>"
+          ]
+        },
+        {
+          "name": "g-longlonglonglonglonglongtext",
+          "head": [
+            "<rect fill=\"rgb(246, 147, 67)\" x=\"2\" y=\"2\" stroke=\"none\" rx=\"2\" ry=\"2\" stroke-width=\"0.5\" width=\"20\" height=\"10\"></rect><text dy=\"0.31em\" x=\"3\" y=\"7\" text-anchor=\"start\" stroke=\"none\" fill=\"white\" font-size=\"8\" textLength=\"18\">测试</text>",
+            "<rect fill=\"rgb(255, 210, 173)\" x=\"2\" y=\"2\" stroke=\"none\" rx=\"2\" ry=\"2\" stroke-width=\"0.5\" width=\"20\" height=\"10\"></rect><text dy=\"0.31em\" x=\"3\" y=\"7\" text-anchor=\"start\" stroke=\"none\" fill=\"white\" font-size=\"8\" textLength=\"18\">正式</text>"
+          ],
+          "bottom": [
+            "<rect fill=\"#d3d3d3\" x=\"1\" y=\"1\" width=\"98\" height=\"10\"></rect><rect x=\"1\" y=\"1\" fill=\"#ff8882\" height=\"10\" width=\"98\"></rect><text dy=\"0.31em\" x=\"50\" y=\"5\" text-anchor=\"middle\" stroke=\"none\" fill=\"white\" font-size=\"8\">7ms</text>"
+          ]
+        },
+        {
+          "name": "h-longlonglonglonglonglongtext",
+          "head": [
+            "<rect fill=\"rgb(246, 147, 67)\" x=\"2\" y=\"2\" stroke=\"none\" rx=\"2\" ry=\"2\" stroke-width=\"0.5\" width=\"20\" height=\"10\"></rect><text dy=\"0.31em\" x=\"3\" y=\"7\" text-anchor=\"start\" stroke=\"none\" fill=\"white\" font-size=\"8\" textLength=\"18\">测试</text>",
+            "<rect fill=\"rgb(255, 210, 173)\" x=\"2\" y=\"2\" stroke=\"none\" rx=\"2\" ry=\"2\" stroke-width=\"0.5\" width=\"20\" height=\"10\"></rect><text dy=\"0.31em\" x=\"3\" y=\"7\" text-anchor=\"start\" stroke=\"none\" fill=\"white\" font-size=\"8\" textLength=\"18\">正式</text>"
+          ],
+          "bottom": [
+            "<rect fill=\"#d3d3d3\" x=\"1\" y=\"1\" width=\"98\" height=\"10\"></rect><rect x=\"1\" y=\"1\" fill=\"#ff8882\" height=\"10\" width=\"98\"></rect><text dy=\"0.31em\" x=\"50\" y=\"5\" text-anchor=\"middle\" stroke=\"none\" fill=\"white\" font-size=\"8\">7ms</text>"
+          ]
+        }
+      ]
+    }
+  ]
+}
