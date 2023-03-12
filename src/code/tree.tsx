@@ -9,7 +9,7 @@ const des = `
 `;
 
 const initConfig = {
-  treeData: TreeData
+  treeData: TreeData,
 };
 
 const Line = () => {
@@ -25,7 +25,6 @@ const Line = () => {
 
   return (
     <div className="test_box">
-
       <Button onClick={handleRefresh}>刷新</Button>
 
       <EWChart

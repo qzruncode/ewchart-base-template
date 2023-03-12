@@ -7,6 +7,11 @@
   "bottom": [
     "<rect fill=\"#d3d3d3\" x=\"1\" y=\"1\" width=\"98\" height=\"10\"></rect><rect x=\"1\" y=\"1\" fill=\"#ff8882\" height=\"10\" width=\"98\"></rect><text dy=\"0.31em\" x=\"50\" y=\"5\" text-anchor=\"middle\" stroke=\"none\" fill=\"white\" font-size=\"8\">7ms</text>"
   ],
+  "tooltip": {
+    "name": "a-longlonglonglonglonglongtext",
+    "test1": "value1",
+    "test2": "value2"
+  },
   "children": [
     {
       "name": "b-longlonglonglonglonglongtext",
@@ -16,7 +21,12 @@
       ],
       "bottom": [
         "<rect fill=\"#d3d3d3\" x=\"1\" y=\"1\" width=\"98\" height=\"10\"></rect><rect x=\"1\" y=\"1\" fill=\"#ff8882\" height=\"10\" width=\"98\"></rect><text dy=\"0.31em\" x=\"50\" y=\"5\" text-anchor=\"middle\" stroke=\"none\" fill=\"white\" font-size=\"8\">7ms</text>"
-      ]
+      ],
+      "tooltip": {
+        "name": "b-longlonglonglonglonglongtext",
+        "test1": "value1",
+        "test2": "value2"
+      }
     },
     {
       "name": "c-longlonglonglonglonglongtext",
@@ -26,7 +36,12 @@
       ],
       "bottom": [
         "<rect fill=\"#d3d3d3\" x=\"1\" y=\"1\" width=\"98\" height=\"10\"></rect>\n<rect x=\"1\" y=\"1\" fill=\"#86bd10\" x=\"-35\" height=\"10\" width=\"84\"></rect><text x=\"50\" dy=\"0.31em\" y=\"5\" text-anchor=\"middle\" stroke=\"none\" fill=\"white\" font-size=\"8\">6ms</text>"
-      ]
+      ],
+      "tooltip": {
+        "name": "c-longlonglonglonglonglongtext",
+        "test1": "value1",
+        "test2": "value2"
+      }
     },
     {
       "name": "d-longlonglonglonglonglongtext",
@@ -37,6 +52,11 @@
       "bottom": [
         "<rect fill=\"#d3d3d3\" x=\"1\" y=\"1\" width=\"98\" height=\"10\"></rect><rect x=\"1\" y=\"1\" fill=\"#ff8882\" height=\"10\" width=\"98\"></rect><text dy=\"0.31em\" x=\"50\" y=\"5\" text-anchor=\"middle\" stroke=\"none\" fill=\"white\" font-size=\"8\">7ms</text>"
       ],
+      "tooltip": {
+        "name": "d-longlonglonglonglonglongtext",
+        "test1": "value1",
+        "test2": "value2"
+      },
       "children": [
         {
           "name": "e-longlonglonglonglonglongtext",
@@ -46,7 +66,12 @@
           ],
           "bottom": [
             "<rect fill=\"#d3d3d3\" x=\"1\" y=\"1\" width=\"98\" height=\"10\"></rect><rect x=\"1\" y=\"1\" fill=\"#ff8882\" height=\"10\" width=\"98\"></rect><text dy=\"0.31em\" x=\"50\" y=\"5\" text-anchor=\"middle\" stroke=\"none\" fill=\"white\" font-size=\"8\">7ms</text>"
-          ]
+          ],
+          "tooltip": {
+            "name": "e-longlonglonglonglonglongtext",
+            "test1": "value1",
+            "test2": "value2"
+          }
         },
         {
           "name": "f-longlonglonglonglonglongtext",
@@ -56,7 +81,12 @@
           ],
           "bottom": [
             "<rect fill=\"#d3d3d3\" x=\"1\" y=\"1\" width=\"98\" height=\"10\"></rect><rect x=\"1\" y=\"1\" fill=\"#86bd10\" x=\"-21\" height=\"10\" width=\"14\"></rect><text dy=\"0.31em\" x=\"50\" y=\"5\" text-anchor=\"middle\" stroke=\"none\" fill=\"white\" font-size=\"8\">1ms</text>"
-          ]
+          ],
+          "tooltip": {
+            "name": "f-longlonglonglonglonglongtext",
+            "test1": "value1",
+            "test2": "value2"
+          }
         },
         {
           "name": "g-longlonglonglonglonglongtext",
@@ -66,7 +96,12 @@
           ],
           "bottom": [
             "<rect fill=\"#d3d3d3\" x=\"1\" y=\"1\" width=\"98\" height=\"10\"></rect><rect x=\"1\" y=\"1\" fill=\"#ff8882\" height=\"10\" width=\"98\"></rect><text dy=\"0.31em\" x=\"50\" y=\"5\" text-anchor=\"middle\" stroke=\"none\" fill=\"white\" font-size=\"8\">7ms</text>"
-          ]
+          ],
+          "tooltip": {
+            "name": "g-longlonglonglonglonglongtext",
+            "test1": "value1",
+            "test2": "value2"
+          }
         },
         {
           "name": "h-longlonglonglonglonglongtext",
@@ -76,7 +111,12 @@
           ],
           "bottom": [
             "<rect fill=\"#d3d3d3\" x=\"1\" y=\"1\" width=\"98\" height=\"10\"></rect><rect x=\"1\" y=\"1\" fill=\"#ff8882\" height=\"10\" width=\"98\"></rect><text dy=\"0.31em\" x=\"50\" y=\"5\" text-anchor=\"middle\" stroke=\"none\" fill=\"white\" font-size=\"8\">7ms</text>"
-          ]
+          ],
+          "tooltip": {
+            "name": "h-longlonglonglonglonglongtext",
+            "test1": "value1",
+            "test2": "value2"
+          }
         }
       ]
     }
