@@ -3,7 +3,7 @@
 
 ## ewchart-base-template
 
-1. 此项目为ewchart脚手架的基础模板
+1. 此项目为[ewchart](https://www.npmjs.com/package/ewchart)图形库的示例模板
 2. 使用[dark-tunnel](https://www.npmjs.com/package/dark-tunnel)下载此模板，运行如下命令
 
   ```
