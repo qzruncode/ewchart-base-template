@@ -12,6 +12,10 @@ const createRouter = () => {
       errorElement: <ErrorPage />,
       children: [
         {
+          path: 'readme',
+          element: <LazyWrapper Lazy={React.lazy(() => import('./readme'))} />,
+        },
+        {
           path: 'line',
           element: <LazyWrapper Lazy={React.lazy(() => import('./line'))} />,
         },

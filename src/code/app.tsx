@@ -14,6 +14,10 @@ const menus = [
     label: 'ewchart示例',
     children: [
       {
+        key: 'readme',
+        label: '简介',
+      },
+      {
         key: 'line',
         label: '折线图',
       },

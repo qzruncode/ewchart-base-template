@@ -1,25 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import EWChart from 'ewchart';
-import { Button, Input, InputNumber, Radio, Tooltip } from 'antd';
+import { Button, Input, Radio, Tooltip } from 'antd';
 import { ToolOutlined } from '@ant-design/icons';
-import { disOrder } from './helper';
 import TreeData from './tree.json';
 
 const des = `
+具体请查看此demo源码
+<EWChart
+  type="tree"
+  size={{
+    // 宽度自适应
+    height: 600,
+    top: 20,
+    right: 30,
+    bottom: 30,
+    left: 30,
+  }}
+  data={chartConfig}
+  treeConfig={treeConfig}
+  method={{
+    onClick: handleNodeClick,
+  }}
+/>
 `;
-
-const initConfig = {
-  spanDepth: 3, // 横向展示的最多节点个数
-  depDepth: 1, // 纵向展示的做多节点层数
-  treeData: TreeData,
-  fixed: true, // 鼠标移出节点tooltip是否不隐藏
-};
-const initTreeConfig: any = {};
 
 const Line = () => {
   const [lineType, setLineType] = useState('linkBezierCurve');
-  const [chartConfig, setChartConfig] = useState(initConfig);
-  const [treeConfig, setTreeConfig] = useState(initTreeConfig);
+  const [chartConfig] = useState({
+    spanDepth: 3, // 横向展示的最多节点个数
+    depDepth: 1, // 纵向展示的做多节点层数
+    treeData: TreeData,
+    fixed: true, // 鼠标移出节点tooltip是否不隐藏
+  });
+  const [treeConfig, setTreeConfig] = useState({});
   const [expandType, setExpandType] = useState('');
 
   useEffect(() => {
@@ -34,14 +47,6 @@ const Line = () => {
       )
     );
   }, [chartConfig]);
-
-  const handleReset = () => {
-    // const newChartConfig = Object.assign({}, chartConfig);
-    // newChartConfig.groups.forEach(group => {
-    //   group.values = disOrder(group.values);
-    // });
-    // setChartConfig(newChartConfig);
-  };
 
   const changeLineType = (type: string) => {
     setLineType(type);
@@ -77,13 +82,11 @@ const Line = () => {
   };
 
   const handleNodeClick = node => {
-    console.log('handleNodeClick', node);
+    alert('节点' + node.name + '被点击了');
   };
 
   return (
     <div className="test_box">
-      <Button onClick={handleReset}>重置</Button>
-
       <Radio.Group size="small" value={lineType} onChange={e => changeLineType(e.target.value)}>
         <Radio.Button value="linkBezierCurve">曲线</Radio.Button>
         <Radio.Button value="linkBroken">折线</Radio.Button>
@@ -139,7 +142,7 @@ const Line = () => {
             </div>
           </div>
         }>
-        <Button style={{ marginRight: 10 }} shape="circle" icon={<ToolOutlined />} />
+        <Button size="small" style={{ marginRight: 10 }} shape="circle" icon={<ToolOutlined />} />
       </Tooltip>
 
       <EWChart
