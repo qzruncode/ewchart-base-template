@@ -4,4 +4,14 @@
 ## ewchart-base-template
 
 1. 此项目为ewchart脚手架的基础模板
-2. 使用dark-tunnel下载此模板，具体使用示例参见 [dark-tunnel](https://www.npmjs.com/package/dark-tunnel)
+2. 使用[dark-tunnel](https://www.npmjs.com/package/dark-tunnel)下载此模板，运行如下命令
+
+  ```
+  mkdir ewchartDemo
+  cd ewchartDemo
+  dark init ewchart-base-template
+  npm install
+  npm start
+  ```
+
+<img width="1200" src="http://qzruncode.github.io/image/ewchart-demo.jpg" alt="ewchart-demo" >
