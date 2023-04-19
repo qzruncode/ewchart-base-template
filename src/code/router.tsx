@@ -55,6 +55,10 @@ const createRouter = () => {
           path: 'tree',
           element: <LazyWrapper Lazy={React.lazy(() => import('./tree'))} />,
         },
+        {
+          path: 'tooltip_canvas',
+          element: <LazyWrapper Lazy={React.lazy(() => import('./tooltip_canvas'))} />,
+        },
       ],
     },
   ]);

@@ -5,51 +5,7 @@ import { Breadcrumb, Button } from 'antd';
 import { disOrder } from './helper';
 
 const des = `
-1. tooltip属于绘图外的功能，具有强自定义属性，ewchart将此功能提供给用户自定义实现，具体实现方式参见此demo源码
-2. 简略版示例代码
-  const handleMove = (
-    type: 'enter' | 'move' | 'leave', // 鼠标事件类型
-    data: Array<{ color?: string; label: string; value: number | null; x: number; y: number }>, // 当前点的信息
-    position: { x: number; y: number } // 鼠标的实时位置
-  ) => {
-    if (tooltipRef.current) {
-      if (type === 'move') {
-        const maxOffsetX = position.x + tooltipRef.current.offsetWidth + 20;
-        if (maxOffsetX < tooltipRef.current.parentElement.offsetWidth) {
-          tooltipRef.current.style.left = position.x + 20 + 'px';
-        }
 
-        tooltipRef.current.style.top = position.y + tooltipRef.current.offsetHeight + 20 + 'px';
-        let html = '';
-        data.forEach(d => {
-          html += \`<div className="title"><span>\${d.label}</span>：<span>\${d.value}</span></div>\`;
-        });
-        if (html === '') {
-          tooltipRef.current.style.display = 'none';
-        } else {
-          tooltipRef.current.style.display = 'block';
-          tooltipRef.current.innerHTML = html;
-        }
-      } else if (type === 'enter') {
-        tooltipRef.current.style.display = 'block';
-      } else if (type === 'leave') {
-        tooltipRef.current.style.display = 'none';
-      }
-    }
-  };
-
-  <EWChart
-    ...
-    method={{
-      onMove: handleMove,
-    }}
-    interactive={{
-      mouse: {
-        crossText: true, // 是否展示y坐标实时文本
-      }
-    }}
-  />
-  <div className="chart-tooltip" ref={tooltipRef}></div>
 `;
 
 const arr1 = [
@@ -84,7 +40,7 @@ const arr1 = [
   55,
   63,
 ];
-for(let i = 0; i < 19970; i++) {
+for(let i = 0; i < 59970; i++) {
   arr1.push(Math.floor(Math.random() * 200))
 }
 
@@ -157,7 +113,7 @@ const LineChart = () => {
       }
     }
   };
-
+  
   return (
     <div className="my-chart">
       <Button
@@ -169,15 +125,16 @@ const LineChart = () => {
 
       <EWChart
         type='line'
+        renderer="canvas"
         size={chartSizeParams}
         data={{
           x: {
             start: 1677658584000, // 时间戳
-            end: 1677658584000 + 1000 * 20000, // 时间戳
+            end: 1677658584000 + 1000 * 60000, // 时间戳
             interval: 1000, // 1秒，每个点的时间间隔
           },
           y: {
-            start: 10,
+            start: 0,
             end: 300,
           },
           yUnit: 'K',
@@ -210,13 +167,6 @@ const Tooltip = () => {
   return (
     <div className="test_box">
       <LineChart />
-
-      <LineChart />
-
-      <LineChart />
-
-      <LineChart />
-
       <pre>
         <code>{des}</code>
       </pre>

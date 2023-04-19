@@ -9,9 +9,9 @@ const Content = Layout.Content;
 
 const menus = [
   {
-    key: 'ewchart',
+    key: 'ewchart_svg',
     icon: React.createElement(NotificationOutlined),
-    label: 'ewchart示例',
+    label: 'svg渲染',
     children: [
       {
         key: 'readme',
@@ -59,6 +59,17 @@ const menus = [
       },
     ],
   },
+  {
+    key: 'ewchart_canvas',
+    icon: React.createElement(NotificationOutlined),
+    label: 'canvas渲染',
+    children: [
+      {
+        key: 'tooltip_canvas',
+        label: 'tooltip_canvas',
+      },
+    ],
+  },
 ];
 
 const darkTunnelBaseTemplate = props => {
@@ -81,7 +92,7 @@ const darkTunnelBaseTemplate = props => {
         <Menu
           mode="inline"
           selectedKeys={selectedKeys}
-          defaultOpenKeys={['ewchart']}
+          defaultOpenKeys={['ewchart_svg', 'ewchart_canvas']}
           style={{ height: '100%', borderRight: 0 }}
           items={menus}
           onSelect={({ key, keyPath, selectedKeys, domEvent }) => {

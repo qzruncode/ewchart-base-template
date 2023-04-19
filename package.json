@@ -46,6 +46,7 @@
     "prettier": "^2.3.2"
   },
   "dependencies": {
+    "@codesandbox/sandpack-react": "^2.6.1",
     "antd": "^5.1.2",
     "ewchart": "^1.0.1",
     "react": "^18.2.0",

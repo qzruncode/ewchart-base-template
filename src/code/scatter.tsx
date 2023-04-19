@@ -67,10 +67,16 @@ const arr1 = [
 const arr2 = [
   75, 132, 68, 253, 163, 98, 107, 25, 90, 251, 208, 56, 97, 79, 238, 96, 155, 110, 82, 93, 148, 185, 111, null, null, null, null, 19, 60, 63,
 ];
+
+for(let i = 0; i < 9970; i++) {
+  arr1.push(Math.floor(Math.random() * 200))
+  arr2.push(Math.floor(Math.random() * 200))
+}
+
 const initConfig = {
   x: {
     start: 1677658584000, // 时间戳
-    end: 1677658614000, // 时间戳
+    end: 1677658584000 + 1000 * 10000, // 时间戳
     interval: 1000, // 1秒，每个点的时间间隔
   },
   y: {
