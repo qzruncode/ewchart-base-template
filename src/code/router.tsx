@@ -20,7 +20,7 @@ const createRouter = () => {
           element: <LazyWrapper Lazy={React.lazy(() => import('./line'))} />,
         },
         {
-          path: 'area-line',
+          path: 'arealine',
           element: <LazyWrapper Lazy={React.lazy(() => import('./arealine'))} />,
         },
         {
@@ -54,6 +54,14 @@ const createRouter = () => {
         {
           path: 'tree',
           element: <LazyWrapper Lazy={React.lazy(() => import('./tree'))} />,
+        },
+        {
+          path: 'line_canvas',
+          element: <LazyWrapper Lazy={React.lazy(() => import('./line_canvas'))} />,
+        },
+        {
+          path: 'arealine_canvas',
+          element: <LazyWrapper Lazy={React.lazy(() => import('./arealine_canvas'))} />,
         },
         {
           path: 'tooltip_canvas',

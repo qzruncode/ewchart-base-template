@@ -95,7 +95,7 @@ const LineChart = () => {
         刷新
       </Button>
       <EWChart
-        renderer='svg'
+        renderer='canvas'
         type="arealine"
         size={chartSizeParams}
         data={{

@@ -22,7 +22,7 @@ const menus = [
         label: '折线图',
       },
       {
-        key: 'area-line',
+        key: 'arealine',
         label: '折线面积图',
       },
       {
@@ -65,8 +65,16 @@ const menus = [
     label: 'canvas渲染',
     children: [
       {
+        key: 'line_canvas',
+        label: '折线图',
+      },
+      {
+        key: 'arealine_canvas',
+        label: '折线面积图',
+      },
+      {
         key: 'tooltip_canvas',
-        label: 'tooltip_canvas',
+        label: 'tooltip',
       },
     ],
   },
