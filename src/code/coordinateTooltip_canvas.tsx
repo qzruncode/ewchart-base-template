@@ -93,7 +93,7 @@ const LineChart = ({ group }) => {
       </Button>
 
       <EWChart
-        renderer="svg"
+        renderer="canvas"
         type="line"
         size={chartSizeParams}
         data={{
@@ -231,7 +231,7 @@ const LineChart = ({ group }) => {
       </Button>
 
       <EWChart
-        renderer="svg"
+        renderer="canvas"
         type="line"
         size={chartSizeParams}
         data={{

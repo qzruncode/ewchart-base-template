@@ -80,6 +80,10 @@ const menus = [
         key: 'tooltip_canvas',
         label: 'tooltip',
       },
+      {
+        key: 'coordinateTooltip_canvas',
+        label: '协同tooltip',
+      },
     ],
   },
 ];

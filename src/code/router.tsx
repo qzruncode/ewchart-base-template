@@ -71,6 +71,10 @@ const createRouter = () => {
           path: 'tooltip_canvas',
           element: <LazyWrapper Lazy={React.lazy(() => import('./tooltip_canvas'))} />,
         },
+        {
+          path: 'coordinateTooltip_canvas',
+          element: <LazyWrapper Lazy={React.lazy(() => import('./coordinateTooltip_canvas'))} />,
+        },
       ],
     },
   ]);
