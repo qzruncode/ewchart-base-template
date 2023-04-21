@@ -1,15 +1,60 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useRef, useState } from 'react';
 import EWChart from 'ewchart';
-import { Breadcrumb, Button } from 'antd';
+import { Button } from 'antd';
 import { disOrder } from './helper';
+import { Sandpack } from '@codesandbox/sandpack-react';
 
 const des = `
-1. tooltip属于绘图外的功能，具有强自定义属性，ewchart将此功能提供给用户自定义实现，具体实现方式参见此demo源码
-2. 简略版示例代码
+import React, { useEffect, useRef, useState } from 'react';
+import EWChart from 'ewchart';
+import { Button } from 'antd';
+import { disOrder } from './helper';
+
+const arr1 = [75, 25, 90, 251, 208, null, null, null, null, 60, 170, 248, 52, 238, 96, 132, 68, 253, 163, 98, 107, 155, 110, 82, 93, 148, 185, 111, 55, 63];
+
+const chartSizeParams = {
+  // 宽度自适应
+  height: 300,
+  top: 20,
+  right: 30,
+  bottom: 30,
+  left: 30,
+};
+
+const Chart = () => {
+  const tooltipRef = useRef(null);
+  const [toDay, setToDay] = useState(arr1);
+
+  useEffect(() => {
+    const ob = observer();
+    tooltipRef.current && ob.observe(tooltipRef.current);
+    return () => {
+      ob.disconnect();
+    };
+  }, []);
+
+  const observer = () => {
+    const ob = new IntersectionObserver(
+      entries => {
+        if (entries[0].intersectionRatio > 0 && entries[0].intersectionRatio < 1) {
+          entries[0].target.style.left =
+            entries[0].target.parentElement.offsetWidth - entries[0].target.offsetWidth + 'px';
+        }
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: [0.1, 0.5, 1],
+      }
+    );
+    tooltipRef.current && ob.observe(tooltipRef.current);
+    return ob;
+  };
+
   const handleMove = (
     type: 'enter' | 'move' | 'leave', // 鼠标事件类型
-    data: Array<{ color?: string; label: string; value: number | null; x: number; y: number }>, // 当前点的信息
+    data: Array<{ color?: string; label: string; value: number | null; x?: number; y?: number }>, // 当前点的信息
     position: { x: number; y: number } // 鼠标的实时位置
   ) => {
     if (tooltipRef.current) {
@@ -38,55 +83,67 @@ const des = `
     }
   };
 
-  <EWChart
-    ...
-    method={{
-      onMove: handleMove,
-    }}
-    interactive={{
-      mouse: {
-        crossText: true, // 是否展示y坐标实时文本
-      }
-    }}
-  />
-  <div className="chart-tooltip" ref={tooltipRef}></div>
+  return (
+    <div className="my-chart">
+      <Button
+        onClick={() => {
+          setToDay(disOrder(toDay));
+        }}>
+        刷新
+      </Button>
+
+      <EWChart
+        type="line"
+        renderer='svg'
+        size={chartSizeParams}
+        data={{
+          x: {
+            start: 1677658584000, // 时间戳
+            end: 1677658584000 + 1000 * 30, // 时间戳
+            interval: 1000, // 1秒，每个点的时间间隔
+          },
+          y: {
+            start: 10,
+            end: 300,
+          },
+          yUnit: 'K',
+          groups: [
+            {
+              lineType: 'solid',
+              label: '今天',
+              break: 'line',
+              breakType: 'dotted',
+              values: toDay,
+            },
+          ],
+        }}
+        method={{
+          onMove: handleMove,
+        }}
+        interactive={{
+          mouse: {
+            crossText: true, // 是否展示y坐标实时文本
+          },
+        }}
+      />
+
+      <div className="chart-tooltip" ref={tooltipRef}></div>
+    </div>
+  );
+};
+
+const Tooltip = () => {
+  return (
+    <div className="test_box">
+      <Chart />
+    </div>
+  );
+};
+
+export default Tooltip;
 `;
 
-const arr1 = [
-  75,
-  25,
-  90,
-  251,
-  208,
-  null,
-  null,
-  null,
-  null,
-  60,
-  170,
-  248,
-  52,
-  238,
-  96,
-  132,
-  68,
-  253,
-  163,
-  98,
-  107,
-  155,
-  110,
-  82,
-  93,
-  148,
-  185,
-  111,
-  55,
-  63,
-];
-for(let i = 0; i < 19970; i++) {
-  arr1.push(Math.floor(Math.random() * 200))
-}
+const arr1 = [75, 25, 90, 251, 208, null, null, null, null, 60, 170, 248, 52, 238, 96, 132, 68, 253, 163, 98, 107, 155, 110, 82, 93, 148, 185, 111, 55, 63];
 
 const chartSizeParams = {
   // 宽度自适应
@@ -97,7 +154,7 @@ const chartSizeParams = {
   left: 30,
 };
 
-const LineChart = () => {
+const Chart = () => {
   const tooltipRef = useRef(null);
   const [toDay, setToDay] = useState(arr1);
 
@@ -168,12 +225,13 @@ const LineChart = () => {
       </Button>
 
       <EWChart
-        type='line'
+        type="line"
+        renderer='svg'
         size={chartSizeParams}
         data={{
           x: {
             start: 1677658584000, // 时间戳
-            end: 1677658584000 + 1000 * 20000, // 时间戳
+            end: 1677658584000 + 1000 * 30, // 时间戳
             interval: 1000, // 1秒，每个点的时间间隔
           },
           y: {
@@ -197,7 +255,7 @@ const LineChart = () => {
         interactive={{
           mouse: {
             crossText: true, // 是否展示y坐标实时文本
-          }
+          },
         }}
       />
 
@@ -209,17 +267,21 @@ const LineChart = () => {
 const Tooltip = () => {
   return (
     <div className="test_box">
-      <LineChart />
+      <Chart />
 
-      <LineChart />
-
-      <LineChart />
-
-      <LineChart />
-
-      <pre>
-        <code>{des}</code>
-      </pre>
+      <Sandpack
+        template="react"
+        theme="dark"
+        files={{
+          '/main.tsx': des,
+        }}
+        options={{
+          layout: 'none',
+          visibleFiles: ['/main.tsx'],
+          activeFile: '/main.tsx',
+          editorHeight: '460px'
+        }}
+      />
     </div>
   );
 };

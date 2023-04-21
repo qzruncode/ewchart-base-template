@@ -73,6 +73,10 @@ const menus = [
         label: '折线面积图',
       },
       {
+        key: 'foottab_canvas',
+        label: 'foottab',
+      },
+      {
         key: 'tooltip_canvas',
         label: 'tooltip',
       },

@@ -64,6 +64,10 @@ const createRouter = () => {
           element: <LazyWrapper Lazy={React.lazy(() => import('./arealine_canvas'))} />,
         },
         {
+          path: 'foottab_canvas',
+          element: <LazyWrapper Lazy={React.lazy(() => import('./foottab_canvas'))} />,
+        },
+        {
           path: 'tooltip_canvas',
           element: <LazyWrapper Lazy={React.lazy(() => import('./tooltip_canvas'))} />,
         },

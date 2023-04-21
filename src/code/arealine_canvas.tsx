@@ -33,7 +33,7 @@ const LineChart = () => {
         刷新
       </Button>
       <EWChart
-        renderer='svg'
+        renderer='canvas'
         type="arealine"
         size={chartSizeParams}
         data={{
@@ -84,7 +84,7 @@ const chartSizeParams = {
   left: 30,
 };
 
-const LineChart = () => {
+const Chart = () => {
   const [toDay, setToDay] = useState(arr1);
   return (
     <div className="my-chart">
@@ -127,18 +127,18 @@ const LineChart = () => {
 const AreaLine = () => {
   return (
     <div className="test_box">
-      <LineChart />
+      <Chart />
       <Sandpack
         template="react"
         theme="dark"
         files={{
-          '/Line.tsx': des,
+          '/main.tsx': des,
         }}
         options={{
           layout: 'none',
-          visibleFiles: ['/Line.tsx'],
-          activeFile: '/Line.tsx',
-          editorHeight: '100vh'
+          visibleFiles: ['/main.tsx'],
+          activeFile: '/main.tsx',
+          editorHeight: '460px'
         }}
       />
     </div>
