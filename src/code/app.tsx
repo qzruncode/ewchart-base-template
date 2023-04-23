@@ -42,19 +42,19 @@ const menus = [
         label: '范围选择',
       },
       {
-        key: 'pie',
+        key: 'level1_pie',
         label: '饼图',
       },
       {
-        key: 'histogram',
+        key: 'level1_histogram',
         label: '直方图',
       },
       {
-        key: 'scatter',
+        key: 'level1_scatter',
         label: '散点图',
       },
       {
-        key: 'tree',
+        key: 'level1_tree',
         label: '树形图',
       },
     ],

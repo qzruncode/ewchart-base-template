@@ -40,20 +40,20 @@ const createRouter = () => {
           element: <LazyWrapper Lazy={React.lazy(() => import('./level1/range'))} />,
         },
         {
-          path: 'pie',
-          element: <LazyWrapper Lazy={React.lazy(() => import('./pie'))} />,
+          path: 'level1_pie',
+          element: <LazyWrapper Lazy={React.lazy(() => import('./level1/pie'))} />,
         },
         {
-          path: 'histogram',
-          element: <LazyWrapper Lazy={React.lazy(() => import('./histogram'))} />,
+          path: 'level1_histogram',
+          element: <LazyWrapper Lazy={React.lazy(() => import('./level1/histogram'))} />,
         },
         {
-          path: 'scatter',
-          element: <LazyWrapper Lazy={React.lazy(() => import('./scatter'))} />,
+          path: 'level1_scatter',
+          element: <LazyWrapper Lazy={React.lazy(() => import('./level1/scatter'))} />,
         },
         {
-          path: 'tree',
-          element: <LazyWrapper Lazy={React.lazy(() => import('./tree'))} />,
+          path: 'level1_tree',
+          element: <LazyWrapper Lazy={React.lazy(() => import('./level1/tree'))} />,
         },
         {
           path: 'level2_line_canvas',
