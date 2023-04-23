@@ -1,11 +1,11 @@
 import React from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, createHashRouter } from 'react-router-dom';
 import ErrorPage from './error-page';
 import App from './app';
 import LazyWrapper from './wrapper';
 
 const createRouter = () => {
-  return createBrowserRouter(
+  return createHashRouter(
     [
       {
         path: '/',
