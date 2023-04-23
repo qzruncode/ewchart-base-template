@@ -9,36 +9,36 @@ const Content = Layout.Content;
 
 const menus = [
   {
+    key: 'readme',
+    label: '简介',
+  },
+  {
     key: 'ewchart_svg',
     icon: React.createElement(NotificationOutlined),
     label: 'svg渲染',
     children: [
       {
-        key: 'readme',
-        label: '简介',
-      },
-      {
-        key: 'line',
+        key: 'level1_line',
         label: '折线图',
       },
       {
-        key: 'arealine',
+        key: 'level1_arealine',
         label: '折线面积图',
       },
       {
-        key: 'foottab',
+        key: 'level1_foottab',
         label: 'foottab',
       },
       {
-        key: 'tooltip',
+        key: 'level1_tooltip',
         label: 'tooltip',
       },
       {
-        key: 'coordinate-tooltip',
+        key: 'level1_coordinate-tooltip',
         label: '协同tooltip',
       },
       {
-        key: 'range',
+        key: 'level1_range',
         label: '范围选择',
       },
       {
@@ -65,24 +65,35 @@ const menus = [
     label: 'canvas渲染',
     children: [
       {
-        key: 'line_canvas',
+        key: 'level2_line_canvas',
         label: '折线图',
       },
       {
-        key: 'arealine_canvas',
+        key: 'level2_arealine_canvas',
         label: '折线面积图',
       },
       {
-        key: 'foottab_canvas',
+        key: 'level2_foottab_canvas',
         label: 'foottab',
       },
       {
-        key: 'tooltip_canvas',
+        key: 'level2_tooltip_canvas',
         label: 'tooltip',
       },
       {
-        key: 'coordinateTooltip_canvas',
+        key: 'level2_coordinateTooltip_canvas',
         label: '协同tooltip',
+      },
+    ],
+  },
+  {
+    key: 'ewchart_canvas_svg',
+    icon: React.createElement(NotificationOutlined),
+    label: 'canvas+svg组合渲染',
+    children: [
+      {
+        key: 'level3_range',
+        label: '范围选择',
       },
     ],
   },
@@ -91,11 +102,11 @@ const menus = [
 const darkTunnelBaseTemplate = props => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [selectedKeys, setSelectedKeys] = useState(['line']);
+  const [selectedKeys, setSelectedKeys] = useState(['level1_line']);
 
   useEffect(() => {
     if (location.pathname === '/') {
-      navigate('line');
+      navigate('level1_line');
     } else {
       setSelectedKeys([location.pathname.slice(1)]);
       navigate(location.pathname);
@@ -104,11 +115,11 @@ const darkTunnelBaseTemplate = props => {
 
   return (
     <Layout>
-      <Sider width={200}>
+      <Sider width={230}>
         <Menu
           mode="inline"
           selectedKeys={selectedKeys}
-          defaultOpenKeys={['ewchart_svg', 'ewchart_canvas']}
+          defaultOpenKeys={['ewchart_svg', 'ewchart_canvas', 'ewchart_canvas_svg']}
           style={{ height: '100%', borderRight: 0 }}
           items={menus}
           onSelect={({ key, keyPath, selectedKeys, domEvent }) => {

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import EWChart, { EWChartData } from 'ewchart';
 import { Button } from 'antd';
-import { disOrder } from './helper';
+import { disOrder } from '../helper';
 import { Sandpack } from '@codesandbox/sandpack-react';
 
 const des = `

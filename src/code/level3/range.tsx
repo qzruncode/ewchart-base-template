@@ -1,19 +1,18 @@
-/* eslint-disable prettier/prettier */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import EWChart from 'ewchart';
 import { Button } from 'antd';
-import { disOrder } from './helper';
+import { disOrder } from '../helper';
 import { Sandpack } from '@codesandbox/sandpack-react';
 
 const des = `
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import EWChart from 'ewchart';
 import { Button } from 'antd';
-import { disOrder } from './helper';
+import { disOrder } from '../helper';
 
 const arr1: number[] = [];
 
-for(let i = 0; i < 10000; i++) {
+for (let i = 0; i < 10000; i++) {
   arr1.push(Math.random() * 200);
 }
 
@@ -26,7 +25,7 @@ const chartSizeParams = {
   left: 30,
 };
 
-const Chart = () => {
+const LineChart = ({ handleSelect }) => {
   const tooltipRef = useRef(null);
   const [toDay, setToDay] = useState(arr1);
 
@@ -95,10 +94,9 @@ const Chart = () => {
         }}>
         刷新
       </Button>
-
       <EWChart
+        renderer="canvas+svg"
         type="line"
-        renderer='canvas'
         size={chartSizeParams}
         data={{
           x: {
@@ -123,8 +121,12 @@ const Chart = () => {
         }}
         method={{
           onMove: handleMove,
+          onSelect: handleSelect,
         }}
         interactive={{
+          select: {
+            min: 5, // 最小的选中范围中允许出现的点个数
+          },
           mouse: {
             crossText: true, // 是否展示y坐标实时文本
           },
@@ -137,9 +139,18 @@ const Chart = () => {
 };
 
 const Tooltip = () => {
+  const [dateText, setDateText] = useState('暂无数据');
+
+  const handleSelect = (dateRange: Date[]) => {
+    setDateText(dateRange[0].toLocaleTimeString() + '~' + dateRange[1].toLocaleTimeString());
+  };
+
+  const Line = useMemo(() => <LineChart handleSelect={handleSelect} />, []); // 必须使用useMemo避免react重绘丢掉ewchart中的状态
+
   return (
     <div className="test_box">
-      <Chart />
+      {Line}
+      选择的时间：{dateText}
     </div>
   );
 };
@@ -149,7 +160,7 @@ export default Tooltip;
 
 const arr1: number[] = [];
 
-for(let i = 0; i < 10000; i++) {
+for (let i = 0; i < 10000; i++) {
   arr1.push(Math.random() * 200);
 }
 
@@ -162,7 +173,7 @@ const chartSizeParams = {
   left: 30,
 };
 
-const Chart = () => {
+const LineChart = ({ handleSelect }) => {
   const tooltipRef = useRef(null);
   const [toDay, setToDay] = useState(arr1);
 
@@ -231,10 +242,9 @@ const Chart = () => {
         }}>
         刷新
       </Button>
-
       <EWChart
+        renderer="canvas+svg"
         type="line"
-        renderer='canvas'
         size={chartSizeParams}
         data={{
           x: {
@@ -259,8 +269,12 @@ const Chart = () => {
         }}
         method={{
           onMove: handleMove,
+          onSelect: handleSelect,
         }}
         interactive={{
+          select: {
+            min: 5, // 最小的选中范围中允许出现的点个数
+          },
           mouse: {
             crossText: true, // 是否展示y坐标实时文本
           },
@@ -273,10 +287,18 @@ const Chart = () => {
 };
 
 const Tooltip = () => {
+  const [dateText, setDateText] = useState('暂无数据');
+
+  const handleSelect = (dateRange: Date[]) => {
+    setDateText(dateRange[0].toLocaleTimeString() + '~' + dateRange[1].toLocaleTimeString());
+  };
+
+  const Line = useMemo(() => <LineChart handleSelect={handleSelect} />, []); // 必须使用useMemo避免react重绘丢掉ewchart中的状态
+
   return (
     <div className="test_box">
-      <Chart />
-
+      {Line}
+      选择的时间：{dateText}
       <Sandpack
         template="react"
         theme="dark"
@@ -287,7 +309,7 @@ const Tooltip = () => {
           layout: 'none',
           visibleFiles: ['/main.tsx'],
           activeFile: '/main.tsx',
-          editorHeight: '460px'
+          editorHeight: '460px',
         }}
       />
     </div>

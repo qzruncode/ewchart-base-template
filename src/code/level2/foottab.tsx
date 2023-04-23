@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import EWChart, { EWChartData, getColorsByIndex } from 'ewchart';
 import { Button } from 'antd';
-import { disOrder } from './helper';
+import { disOrder } from '../helper';
 import { Sandpack } from '@codesandbox/sandpack-react';
 
 const des = 
@@ -43,6 +43,7 @@ const initConfig: EWChartData = {
       label: '昨天',
       break: 'none',
       values: arr2,
+      lineWidth: 3,
     },
   ],
 };
@@ -98,7 +99,7 @@ const FootTab = () => {
       <Button onClick={handleRefresh}>刷新</Button>
           
       <EWChart
-        renderer='svg'
+        renderer='canvas'
         type="line"
         size={{
           // 宽度自适应
@@ -158,6 +159,7 @@ const initConfig: EWChartData = {
       label: '昨天',
       break: 'none',
       values: arr2,
+      lineWidth: 3,
     },
   ],
 };
@@ -213,7 +215,7 @@ const FootTab = () => {
       <Button onClick={handleRefresh}>刷新</Button>
           
       <EWChart
-        renderer='svg'
+        renderer='canvas'
         type="line"
         size={{
           // 宽度自适应

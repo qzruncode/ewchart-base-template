@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import EWChart from 'ewchart';
 import { Button } from 'antd';
-import { disOrder } from './helper';
+import { disOrder } from '../helper';
 import { Sandpack } from '@codesandbox/sandpack-react';
 
 const des = `
@@ -11,7 +11,11 @@ import EWChart from 'ewchart';
 import { Button } from 'antd';
 import { disOrder } from './helper';
 
-const arr1 = [75, 25, 90, 251, 208, null, null, null, null, 60, 170, 248, 52, 238, 96, 132, 68, 253, 163, 98, 107, 155, 110, 82, 93, 148, 185, 111, 55, 63];
+const arr1: number[] = [];
+
+for(let i = 0; i < 10000; i++) {
+  arr1.push(Math.random() * 200);
+}
 
 const chartSizeParams = {
   // 宽度自适应
@@ -94,16 +98,16 @@ const Chart = () => {
 
       <EWChart
         type="line"
-        renderer='svg'
+        renderer='canvas'
         size={chartSizeParams}
         data={{
           x: {
             start: 1677658584000, // 时间戳
-            end: 1677658584000 + 1000 * 30, // 时间戳
+            end: 1677658584000 + 1000 * 10000, // 时间戳
             interval: 1000, // 1秒，每个点的时间间隔
           },
           y: {
-            start: 10,
+            start: 0,
             end: 300,
           },
           yUnit: 'K',
@@ -143,7 +147,11 @@ const Tooltip = () => {
 export default Tooltip;
 `;
 
-const arr1 = [75, 25, 90, 251, 208, null, null, null, null, 60, 170, 248, 52, 238, 96, 132, 68, 253, 163, 98, 107, 155, 110, 82, 93, 148, 185, 111, 55, 63];
+const arr1: number[] = [];
+
+for(let i = 0; i < 10000; i++) {
+  arr1.push(Math.random() * 200);
+}
 
 const chartSizeParams = {
   // 宽度自适应
@@ -226,16 +234,16 @@ const Chart = () => {
 
       <EWChart
         type="line"
-        renderer='svg'
+        renderer='canvas'
         size={chartSizeParams}
         data={{
           x: {
             start: 1677658584000, // 时间戳
-            end: 1677658584000 + 1000 * 30, // 时间戳
+            end: 1677658584000 + 1000 * 10000, // 时间戳
             interval: 1000, // 1秒，每个点的时间间隔
           },
           y: {
-            start: 10,
+            start: 0,
             end: 300,
           },
           yUnit: 'K',

@@ -1,15 +1,15 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import EWChart from 'ewchart';
 import { Button } from 'antd';
-import { disOrder } from './helper';
+import { disOrder } from '../helper';
 import { Sandpack } from '@codesandbox/sandpack-react';
 
 const des = `
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import EWChart from 'ewchart';
 import { Button } from 'antd';
-import { disOrder } from './helper';
+import { disOrder } from '../helper';
 
 const arr1 = [75, 25, 90, 251, 208, null, null, null, null, 60, 170, 248, 52, 238, 96, 132, 68, 253, 163, 98, 107, 155, 110, 82, 93, 148, 185, 111, 55, 63];
 
@@ -22,7 +22,7 @@ const chartSizeParams = {
   left: 30,
 };
 
-const LineChart = () => {
+const LineChart = ({ handleSelect }) => {
   const [toDay, setToDay] = useState(arr1);
   return (
     <div className="my-chart">
@@ -33,8 +33,8 @@ const LineChart = () => {
         刷新
       </Button>
       <EWChart
-        renderer='canvas'
-        type="arealine"
+        renderer="svg"
+        type="line"
         size={chartSizeParams}
         data={{
           x: {
@@ -57,20 +57,37 @@ const LineChart = () => {
             },
           ],
         }}
+        method={{
+          onSelect: handleSelect,
+        }}
+        interactive={{
+          select: {
+            min: 5, // 最小的选中范围中允许出现的点个数
+          },
+        }}
       />
     </div>
   );
 };
 
-const AreaLine = () => {
+const Range = () => {
+  const [dateText, setDateText] = useState('暂无数据');
+
+  const handleSelect = (dateRange: Date[]) => {
+    setDateText(dateRange[0].toLocaleTimeString() + '~' + dateRange[1].toLocaleTimeString());
+  };
+
+  const Line = useMemo(() => <LineChart handleSelect={handleSelect} />, []); // 必须使用useMemo避免react重绘丢掉ewchart中的状态
+
   return (
     <div className="test_box">
-      <LineChart />
+      {Line}
+      选择的时间：{dateText}
     </div>
   );
 };
 
-export default AreaLine;
+export default Range;
 `;
 
 const arr1 = [75, 25, 90, 251, 208, null, null, null, null, 60, 170, 248, 52, 238, 96, 132, 68, 253, 163, 98, 107, 155, 110, 82, 93, 148, 185, 111, 55, 63];
@@ -84,7 +101,7 @@ const chartSizeParams = {
   left: 30,
 };
 
-const Chart = () => {
+const LineChart = ({ handleSelect }) => {
   const [toDay, setToDay] = useState(arr1);
   return (
     <div className="my-chart">
@@ -95,8 +112,8 @@ const Chart = () => {
         刷新
       </Button>
       <EWChart
-        renderer='canvas'
-        type="arealine"
+        renderer="svg"
+        type="line"
         size={chartSizeParams}
         data={{
           x: {
@@ -119,15 +136,33 @@ const Chart = () => {
             },
           ],
         }}
+        method={{
+          onSelect: handleSelect,
+        }}
+        interactive={{
+          select: {
+            min: 5, // 最小的选中范围中允许出现的点个数
+          },
+        }}
       />
     </div>
   );
 };
 
-const AreaLine = () => {
+const Range = () => {
+  const [dateText, setDateText] = useState('暂无数据');
+
+  const handleSelect = (dateRange: Date[]) => {
+    setDateText(dateRange[0].toLocaleTimeString() + '~' + dateRange[1].toLocaleTimeString());
+  };
+
+  const Line = useMemo(() => <LineChart handleSelect={handleSelect} />, []); // 必须使用useMemo避免react重绘丢掉ewchart中的状态
+
   return (
     <div className="test_box">
-      <Chart />
+      {Line}
+      选择的时间：{dateText}
+
       <Sandpack
         template="react"
         theme="dark"
@@ -138,11 +173,11 @@ const AreaLine = () => {
           layout: 'none',
           visibleFiles: ['/main.tsx'],
           activeFile: '/main.tsx',
-          editorHeight: '460px'
+          editorHeight: '460px',
         }}
       />
     </div>
   );
 };
 
-export default AreaLine;
+export default Range;
