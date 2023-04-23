@@ -4,7 +4,7 @@
   "description": "dark-tunnel的应用模板，用于快速生成ewchart应用",
   "scripts": {
     "start": "dark run -m Dev -h local.test.com -p 3003 -H -url /",
-    "build": "dark run -m Pro -url /",
+    "build": "dark run -m Pro -url ./",
     "reinstall": "rm -rf node_modules && npm install --registry=https://registry.npmjs.org",
     "tsc": "tsc",
     "fix": "npx eslint --fix",
