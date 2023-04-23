@@ -9,8 +9,8 @@ const subAppName = 'darkTunnelBaseTemplate';
 
 const root = ReactDOM.createRoot(document.getElementById(subAppName) as HTMLElement);
 
-if (window.location.pathname === '/') {
-  window.location.replace(window.location.origin + '/#/ewchart-base-template/build/level1_line');
+if (window.location.pathname === '/' || window.location.pathname === '/ewchart-base-template/build/') {
+  window.location.replace(window.location.origin + '/#/level1_line');
 }
 
 root.render(
