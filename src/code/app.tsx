@@ -7,6 +7,8 @@ import { Layout, Menu } from 'antd';
 const Sider = Layout.Sider;
 const Content = Layout.Content;
 
+const basename = '/ewchart-base-template/build/';
+
 const menus = [
   {
     key: 'readme',
