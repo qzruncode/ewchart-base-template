@@ -1,6 +1,6 @@
 {
   "name": "ewchart-base-template",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "dark-tunnel的应用模板，用于快速生成ewchart应用",
   "scripts": {
     "start": "dark run -m Dev -h local.test.com -p 3003 -H -url /",
