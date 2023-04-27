@@ -12,7 +12,7 @@ import { disOrder } from '../helper';
 
 const arr1: number[] = [];
 
-for (let i = 0; i < 10000; i++) {
+for (let i = 0; i < 30000; i++) {
   arr1.push(Math.random() * 200);
 }
 
@@ -25,10 +25,34 @@ const chartSizeParams = {
   left: 30,
 };
 
-const LineChart = ({ handleSelect }) => {
-  const tooltipRef = useRef(null);
-  const [toDay, setToDay] = useState(arr1);
+const initChartData = {
+  x: {
+    start: 1677658584000, // 时间戳
+    end: 1677658584000 + 1000 * 30000, // 时间戳
+    interval: 1000, // 1秒，每个点的时间间隔
+  },
+  y: {
+    start: 0,
+    end: 300,
+  },
+  yUnit: 'K',
+  groups: [
+    {
+      lineType: 'solid',
+      label: '今天',
+      break: 'line',
+      breakType: 'dotted',
+      values: arr1,
+    },
+  ],
+};
 
+const LineChart = () => {
+  const tooltipRef = useRef(null);
+  const [chartData, setChartData] = useState(initChartData);
+  const [dateText, setDateText] = useState('暂无数据');
+  const [indexs, setIndexs] = useState<number[]>([]);
+  const [dates, setDates] = useState<Date[]>([]);
   useEffect(() => {
     const ob = observer();
     tooltipRef.current && ob.observe(tooltipRef.current);
@@ -36,6 +60,42 @@ const LineChart = ({ handleSelect }) => {
       ob.disconnect();
     };
   }, []);
+
+  useEffect(() => {
+    if (indexs.length > 0) {
+      const values = chartData.groups[0].values.slice(indexs[0], indexs[1] + 1);
+      setChartData({
+        x: {
+          start: dates[0].getTime(), // 时间戳
+          end: dates[1].getTime(), // 时间戳
+          interval: 1000, // 1秒，每个点的时间间隔
+        },
+        y: {
+          start: 0,
+          end: 300,
+        },
+        yUnit: 'K',
+        groups: [
+          {
+            lineType: 'solid',
+            label: '今天',
+            break: 'line',
+            breakType: 'dotted',
+            values: values,
+          },
+        ],
+      });
+    }
+
+    if (dates.length > 0) {
+      setDateText(dates[0].toLocaleTimeString() + '~' + dates[1].toLocaleTimeString());
+    }
+  }, [indexs, dates]);
+
+  const handleSelect = (rangeIndexs: number[], dateRange: Date[]) => {
+    setIndexs(rangeIndexs);
+    setDates(dateRange);
+  };
 
   const observer = () => {
     const ob = new IntersectionObserver(
@@ -88,37 +148,11 @@ const LineChart = ({ handleSelect }) => {
 
   return (
     <div className="my-chart">
-      <Button
-        onClick={() => {
-          setToDay(disOrder(toDay));
-        }}>
-        刷新
-      </Button>
       <EWChart
         renderer="canvas+svg"
         type="line"
         size={chartSizeParams}
-        data={{
-          x: {
-            start: 1677658584000, // 时间戳
-            end: 1677658584000 + 1000 * 10000, // 时间戳
-            interval: 1000, // 1秒，每个点的时间间隔
-          },
-          y: {
-            start: 0,
-            end: 300,
-          },
-          yUnit: 'K',
-          groups: [
-            {
-              lineType: 'solid',
-              label: '今天',
-              break: 'line',
-              breakType: 'dotted',
-              values: toDay,
-            },
-          ],
-        }}
+        data={chartData}
         method={{
           onMove: handleMove,
           onSelect: handleSelect,
@@ -132,35 +166,26 @@ const LineChart = ({ handleSelect }) => {
           },
         }}
       />
-
+      选择的时间：{dateText}
       <div className="chart-tooltip" ref={tooltipRef}></div>
     </div>
   );
 };
 
-const Tooltip = () => {
-  const [dateText, setDateText] = useState('暂无数据');
-
-  const handleSelect = (dateRange: Date[]) => {
-    setDateText(dateRange[0].toLocaleTimeString() + '~' + dateRange[1].toLocaleTimeString());
-  };
-
-  const Line = useMemo(() => <LineChart handleSelect={handleSelect} />, []); // 必须使用useMemo避免react重绘丢掉ewchart中的状态
-
+const Range = () => {
   return (
     <div className="test_box">
-      {Line}
-      选择的时间：{dateText}
+      <LineChart />
     </div>
   );
 };
 
-export default Tooltip;
+export default Range;
 `;
 
 const arr1: number[] = [];
 
-for (let i = 0; i < 10000; i++) {
+for (let i = 0; i < 30000; i++) {
   arr1.push(Math.random() * 200);
 }
 
@@ -173,10 +198,34 @@ const chartSizeParams = {
   left: 30,
 };
 
-const LineChart = ({ handleSelect }) => {
-  const tooltipRef = useRef(null);
-  const [toDay, setToDay] = useState(arr1);
+const initChartData = {
+  x: {
+    start: 1677658584000, // 时间戳
+    end: 1677658584000 + 1000 * 30000, // 时间戳
+    interval: 1000, // 1秒，每个点的时间间隔
+  },
+  y: {
+    start: 0,
+    end: 300,
+  },
+  yUnit: 'K',
+  groups: [
+    {
+      lineType: 'solid',
+      label: '今天',
+      break: 'line',
+      breakType: 'dotted',
+      values: arr1,
+    },
+  ],
+};
 
+const LineChart = () => {
+  const tooltipRef = useRef(null);
+  const [chartData, setChartData] = useState(initChartData);
+  const [dateText, setDateText] = useState('暂无数据');
+  const [indexs, setIndexs] = useState<number[]>([]);
+  const [dates, setDates] = useState<Date[]>([]);
   useEffect(() => {
     const ob = observer();
     tooltipRef.current && ob.observe(tooltipRef.current);
@@ -184,6 +233,42 @@ const LineChart = ({ handleSelect }) => {
       ob.disconnect();
     };
   }, []);
+
+  useEffect(() => {
+    if (indexs.length > 0) {
+      const values = chartData.groups[0].values.slice(indexs[0], indexs[1] + 1);
+      setChartData({
+        x: {
+          start: dates[0].getTime(), // 时间戳
+          end: dates[1].getTime(), // 时间戳
+          interval: 1000, // 1秒，每个点的时间间隔
+        },
+        y: {
+          start: 0,
+          end: 300,
+        },
+        yUnit: 'K',
+        groups: [
+          {
+            lineType: 'solid',
+            label: '今天',
+            break: 'line',
+            breakType: 'dotted',
+            values: values,
+          },
+        ],
+      });
+    }
+
+    if (dates.length > 0) {
+      setDateText(dates[0].toLocaleTimeString() + '~' + dates[1].toLocaleTimeString());
+    }
+  }, [indexs, dates]);
+
+  const handleSelect = (rangeIndexs: number[], dateRange: Date[]) => {
+    setIndexs(rangeIndexs);
+    setDates(dateRange);
+  };
 
   const observer = () => {
     const ob = new IntersectionObserver(
@@ -236,37 +321,11 @@ const LineChart = ({ handleSelect }) => {
 
   return (
     <div className="my-chart">
-      <Button
-        onClick={() => {
-          setToDay(disOrder(toDay));
-        }}>
-        刷新
-      </Button>
       <EWChart
         renderer="canvas+svg"
         type="line"
         size={chartSizeParams}
-        data={{
-          x: {
-            start: 1677658584000, // 时间戳
-            end: 1677658584000 + 1000 * 10000, // 时间戳
-            interval: 1000, // 1秒，每个点的时间间隔
-          },
-          y: {
-            start: 0,
-            end: 300,
-          },
-          yUnit: 'K',
-          groups: [
-            {
-              lineType: 'solid',
-              label: '今天',
-              break: 'line',
-              breakType: 'dotted',
-              values: toDay,
-            },
-          ],
-        }}
+        data={chartData}
         method={{
           onMove: handleMove,
           onSelect: handleSelect,
@@ -280,25 +339,17 @@ const LineChart = ({ handleSelect }) => {
           },
         }}
       />
-
+      选择的时间：{dateText}
       <div className="chart-tooltip" ref={tooltipRef}></div>
     </div>
   );
 };
 
-const Tooltip = () => {
-  const [dateText, setDateText] = useState('暂无数据');
-
-  const handleSelect = (dateRange: Date[]) => {
-    setDateText(dateRange[0].toLocaleTimeString() + '~' + dateRange[1].toLocaleTimeString());
-  };
-
-  const Line = useMemo(() => <LineChart handleSelect={handleSelect} />, []); // 必须使用useMemo避免react重绘丢掉ewchart中的状态
-
+const Range = () => {
   return (
     <div className="test_box">
-      {Line}
-      选择的时间：{dateText}
+      <LineChart />
+
       <Sandpack
         template="react"
         theme="dark"
@@ -316,4 +367,4 @@ const Tooltip = () => {
   );
 };
 
-export default Tooltip;
+export default Range;

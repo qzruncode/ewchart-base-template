@@ -105,7 +105,7 @@ const Chart = () => {
             interval: 1000, // 1秒，每个点的时间间隔
           },
           y: {
-            start: 10,
+            start: 0,
             end: 300,
           },
           yUnit: 'K',
