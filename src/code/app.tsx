@@ -57,6 +57,10 @@ const menus = [
         key: 'level1_tree',
         label: '树形图',
       },
+      {
+        key: 'level1_candlestick',
+        label: '蜡烛图',
+      },
     ],
   },
   {

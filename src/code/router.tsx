@@ -56,6 +56,10 @@ const createRouter = () => {
           element: <LazyWrapper Lazy={React.lazy(() => import('./level1/tree'))} />,
         },
         {
+          path: 'level1_candlestick',
+          element: <LazyWrapper Lazy={React.lazy(() => import('./level1/candlestick'))} />,
+        },
+        {
           path: 'level2_line_canvas',
           element: <LazyWrapper Lazy={React.lazy(() => import('./level2/line'))} />,
         },

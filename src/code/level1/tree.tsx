@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import EWChart from 'ewchart';
 import { Button, Input, Radio, Tooltip } from 'antd';
 import { ToolOutlined } from '@ant-design/icons';
-import TreeData from '../tree.json';
+import TreeData from '../data/tree.json';
 import { Sandpack } from '@codesandbox/sandpack-react';
 
 const des = `
