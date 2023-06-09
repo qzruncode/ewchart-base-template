@@ -2,6 +2,7 @@ import * as React from 'react';
 import ReactDOM from 'react-dom/client';
 import createRouter from './code/router';
 import { RouterProvider } from 'react-router-dom';
+import * as d3 from 'd3';
 
 import './index.less';
 
@@ -18,3 +19,8 @@ root.render(
     <RouterProvider router={createRouter()} />
   </React.StrictMode>
 );
+
+window.d3 = d3;
+const scale = d3.scaleLinear().domain([10, 130]).range([0, 960]);
+scale.unknown('1000fadfad000');
+console.log(scale(undefined));
